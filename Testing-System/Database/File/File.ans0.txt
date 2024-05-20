@@ -1,0 +1,11 @@
+#include <stdio.h>
+fopen()
+"r"
+"w"
+fclose()
+feof()
+"a"
+fscanf()
+fprintf()
+"r+", "w+", "a+"
+.txt

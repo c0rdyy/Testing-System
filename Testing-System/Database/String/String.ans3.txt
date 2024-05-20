@@ -1,0 +1,11 @@
+Функция
+size()
+merge()
+write()
+copy()
+equals()
+char greeting[] = Hello
+strstrip()
+tokenize()
+strtol()
+strfind()

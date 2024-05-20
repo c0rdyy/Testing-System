@@ -1,0 +1,11 @@
+ #include <stdlib.h>
+readfile()
+"a"
+"a"
+endfile()
+end_of_file()
+"r"
+scanf()
+fscanf()
+"rb+", "wb+", "ab+"
+.exe

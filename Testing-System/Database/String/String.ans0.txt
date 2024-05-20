@@ -1,0 +1,11 @@
+Тип данных
+strlen()
+strcat()
+puts()
+strcpy()
+strcmp()
+char greeting[] = "Hello"
+trim()
+strtok()
+atoi()
+strstr()

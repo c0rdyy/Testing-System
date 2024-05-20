@@ -1,0 +1,11 @@
+Переменная
+length()
+join()
+display()
+memcopy()
+comparestr()
+char *greeting = "Hello"
+remove_spaces()
+strsplit()
+parseint()
+strpos()

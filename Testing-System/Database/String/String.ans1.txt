@@ -1,0 +1,11 @@
+Структура
+len()
+concat()
+printstr()
+copystr()
+equalstr()
+string greeting = "Hello"
+strtrim()
+split()
+strtoi()
+findstr()
