@@ -1,0 +1,411 @@
+//#include "главный.h"
+
+//#include "Функции.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+//#include "главный.h"
+
+
+//выбор тематики теста
+
+
+int count_of_questions=0;
+struct test{
+    char quest[1000];//вопросы [256]
+    char ans[4][1000];//ответы. 1- всегда правильный. [4][256]
+};
+
+int countLinesInFile(const char* filename) {
+    FILE* file = fopen(filename, "r");
+
+    int count = 0;
+    char c;
+
+    while((c = fgetc(file)) != EOF) {
+        if(c == '\n') {
+            count++;
+        }
+    }
+
+    fclose(file);
+    return count;
+}
+
+int readf(struct test *proga, int prg1){
+    int n1=count_of_questions;
+    
+    FILE* f;
+    FILE* f0;
+    FILE* f1;
+    FILE* f2;
+    FILE* f3;
+    
+    if (prg1==1)
+    {
+        count_of_questions = countLinesInFile("Loop.quest.txt");
+        f=fopen("Loop.quest.txt","r");
+        f0=fopen("Loop.ans0.txt","r");
+        f1=fopen("Loop.ans1.txt","r");
+        f2=fopen("Loop.ans2.txt","r");
+        f3=fopen("Loop.ans3.txt","r");
+    }
+            
+    if (prg1==2)
+    {
+        count_of_questions = countLinesInFile("Array.quest.txt");
+        f=fopen("Array.quest.txt","r");
+        f0=fopen("Array.ans0.txt","r");
+        f1=fopen("Array.ans1.txt","r");
+        f2=fopen("Array.ans2.txt","r");
+        f3=fopen("Array.ans3.txt","r");
+    }
+            
+    if (prg1==3)
+    {
+        count_of_questions = countLinesInFile("String.quest.txt");
+        f=fopen("String.quest.txt","r");
+        f0=fopen("String.ans0.txt","r");
+        f1=fopen("String.ans1.txt","r");
+        f2=fopen("String.ans2.txt","r");
+        f3=fopen("String.ans3.txt","r");
+    }
+            
+    if (prg1==4)
+    {count_of_questions = countLinesInFile("Recursion.quest.txt");
+        f=fopen("Recursion.quest.txt","r");
+        f0=fopen("Recursion.ans0.txt","r");
+        f1=fopen("Recursion.ans1.txt","r");
+        f2=fopen("Recursion.ans2.txt","r");
+        f3=fopen("Recursion.ans3.txt","r");
+    }
+            
+    if (prg1==5)
+        {count_of_questions = countLinesInFile("Structure.quest.txt");
+            f=fopen("Structure.quest.txt","r");
+            f0=fopen("Structure.ans0.txt","r");
+            f1=fopen("Structure.ans1.txt","r");
+            f2=fopen("Structure.ans2.txt","r");
+            f3=fopen("Structure.ans3.txt","r");
+        }
+            
+    if (prg1==6)
+    {count_of_questions = countLinesInFile("File.quest.txt");
+        f=fopen("File.quest.txt","r");
+        f0=fopen("File.ans0.txt","r");
+        f1=fopen("File.ans1.txt","r");
+        f2=fopen("File.ans2.txt","r");
+        f3=fopen("File.ans3.txt","r");
+    }
+            
+    if (prg1==7)
+    {count_of_questions = countLinesInFile("Address.quest.txt");
+        f=fopen("Address.quest.txt","r");
+        f0=fopen("Address.ans0.txt","r");
+        f1=fopen("Address.ans1.txt","r");
+        f2=fopen("Address.ans2.txt","r");
+        f3=fopen("Address.ans3.txt","r");
+    }
+            
+    if (prg1==8)
+    {count_of_questions = countLinesInFile("Dynamic.quest.txt");
+        f=fopen("Dynamic.quest.txt","r");
+        f0=fopen("Dynamic.ans0.txt","r");
+        f1=fopen("Dynamic.ans1.txt","r");
+        f2=fopen("Dynamic.ans2.txt","r");
+        f3=fopen("Dynamic.ans3.txt","r");
+    }
+
+
+    for (int i=0; i<n1; i++){
+        fgets(proga[i].quest, 1000, f);
+    }
+    fclose(f);
+    
+    //1 ответ (правильный)
+    for (int i=0; i<n1; i++){
+        fgets(proga[i].ans[0], 1000, f0);
+    }
+    fclose(f0);
+    
+    //2 ответ
+    for (int i=0; i<n1; i++){
+        fgets(proga[i].ans[1], 1000, f1);
+    }
+    fclose(f1);
+    
+    //3 ответ
+    for (int i=0; i<n1; i++){
+        fgets(proga[i].ans[2], 1000, f2);
+    }
+    fclose(f2);
+    
+    //4 ответ
+    for (int i=0; i<n1; i++){
+        fgets(proga[i].ans[3], 1000, f3);
+    }
+    fclose(f3);
+    return count_of_questions;
+}
+
+
+void tren(int *mass_ans, struct test *proga, int n){
+    for (int i=0; i<n; i++){
+    int que;
+    que=rand()%(count_of_questions);
+    
+    do
+    {
+        if (mass_ans[que]==1) que=(que+1)%count_of_questions;
+    }while (mass_ans[que]==1);
+    mass_ans[que]=1;
+    
+    printf("%d. %s\n", i+1, proga[que].quest);//выводим вопрос на экран
+    
+    int mass_anss[4]={0};
+    int right = 0;//инициализировала, зачем?????
+    
+    for (int j=0; j<4;j++){
+        int ans;
+        ans=rand()%4;
+        do
+        {
+            if (mass_anss[ans]==1) ans=(ans+1)%4;
+        }while (mass_anss[ans]==1);
+        mass_anss[ans]=1;
+        printf("%d - %s\n", j+1,proga[que].ans[ans]);//выводим ответы по очереди на экран
+        if (ans==0) right=j+1;//запоминаем индекс правильного ответа
+    }
+        
+    //для экзамена нужна переменная с общей суммой, потом поделить на общее количество вопросов
+    //тест
+    int ot;
+    do{
+        scanf("%d", &ot);
+        if (ot==right) printf("вы ответили верно\n");
+        else{printf("вы ответили неверно\n");}
+    }while(ot!=right);
+}
+}
+int exam(int n, int *mass_ans,struct test *proga){
+    //для экзамена
+    int rez=0, osh=0;
+    char q_osh[n][1000];//массив вопросов с ошибками
+    char a_osh[n][1000];//правильный ответ
+    int n_osh[n];//номера вопросов с неправильными ответами
+    for (int i=0; i<n; i++)
+    {
+        int que;
+        que=rand()%(count_of_questions);
+        do
+        {
+            if (mass_ans[que]==1) que=(que+1)%count_of_questions;
+        }while (mass_ans[que]==1);
+        mass_ans[que]=1;
+        
+        printf("%d. %s\n", i+1, proga[que].quest);//выводим вопрос на экран
+        
+        int mass_anss[4]={0};
+        int right = 0;//инициализировала, зачем?????
+        
+        for (int j=0; j<4;j++)
+        {
+            int ans;
+            ans=rand()%4;
+            do
+            {
+                if (mass_anss[ans]==1) ans=(ans+1)%4;
+            }while (mass_anss[ans]==1);
+            mass_anss[ans]=1;
+            printf(" %d - %s\n", j+1,proga[que].ans[ans]);//выводим ответы по очереди на экран
+            if (ans==0) right=j+1;//запоминаем индекс правильного ответа
+        }
+        //для экзамена нужна переменная с общей суммой, потом поделить на общее количество вопросов
+        //тест
+        int ot;
+        do{
+            printf("введите ответ (1, 2, 3 или 4)\n");
+            scanf("%d", &ot);
+            if (ot==right) rez++;
+            else
+            {
+                strcpy(q_osh[osh], proga[que].quest);
+                strcpy(a_osh[osh], proga[que].ans[0]);
+                n_osh[osh]=que;//вводим номер вопроса, где была допущена ошибка.
+                osh++;
+            }
+        }while(ot<1 || ot>4);
+    }
+    printf("Результат экзамена: %d из %d\nОценка: %d\nКоличество ошибок: %d\n", rez, n, ((rez*5)/n)+1, osh);
+    for (int i=0; i<osh; i++){
+        printf("Ошибка %d: %s\n", i+1, q_osh[i]);
+        printf("Правильный ответ: %s\n", a_osh[i]);
+    }
+    if (osh>0)
+    {
+    int prg1=0;
+    printf("Хотите сделать работу над ошибками?\n 1 - да\n любое другое целое число - нет \n");scanf("%d", &prg1);
+        if (prg1==1){
+            for (int i1=0; i1<osh; i1++)
+            {
+                printf("%d. %s\n", i1,proga[n_osh[i1]].quest);
+                
+                int mass_anss[4]={0};
+                int right = 0;//инициализировала, зачем?????
+                
+                for (int j=0; j<4;j++){
+                    int ans;
+                    ans=rand()%4;
+                    do
+                    {
+                        if (mass_anss[ans]==1) ans=(ans+1)%4;
+                    }while (mass_anss[ans]==1);
+                    mass_anss[ans]=1;
+                    printf("%d - %s\n", j+1,proga[n_osh[i1]].ans[ans]);//выводим ответы по очереди на экран
+                    if (ans==0) right=j+1;//запоминаем индекс правильного ответа
+                }
+                //для экзамена нужна переменная с общей суммой, потом поделить на общее количество вопросов
+                //тест
+                int ot;
+                do{
+                    scanf("%d", &ot);
+                    if (ot==right) printf("вы ответили верно\n");
+                    else{printf("вы ответили неверно\n");}
+                }while(ot!=right);
+            }
+        }
+    }
+    return rez=0;
+}
+
+void Working_with_themes(int x)
+{
+    
+
+
+    int prg=0;
+    do{
+
+        srand(time(NULL));
+        struct test proga[100];//считать с файла вопросы и ответы к ним (должно быть 5 файлов)
+
+        readf(proga, x);
+//        int n=count_of_questions;
+
+        int mass_ans[100]={0};//массив ответов
+
+        int rezim;//выбор режима( тренировка или экзамен)
+        do{
+            printf("Выберите режим\n 1 - Тренинг по теме\n 2 - Тестирование по теме\n");
+            scanf("%d", &rezim);
+        }while (rezim<1 || rezim>2);
+
+        if (rezim==1){//тренировка
+            tren(mass_ans, proga, 10);}
+        else{//экзамен
+            exam(10, mass_ans, proga);}
+
+        printf("Если хотите закончить выполнение программы, нажмите 0\nЕсли хотите пройти тест ещё раз, введите любое целое число\n");scanf("%d", &prg);
+    }while (prg!=0);
+}
+
+
+int Final_Test(){
+    int assessment=0;
+    int order_questions[8][5];//8 строк, 5 столбцов. 8-темы. 5-номера вопросов.
+    struct test Final_Proga[40];
+    
+    struct test theme_1[100];
+    int n1=readf(theme_1, 1);
+    struct test theme_2[100];
+    int n2=readf(theme_2, 2);
+    struct test theme_3[100];
+    int n3=readf(theme_3, 3);
+    struct test theme_4[100];
+    int n4=readf(theme_4, 4);
+    struct test theme_5[100];
+    int n5=readf(theme_5, 5);
+    struct test theme_6[100];
+    int n6=readf(theme_6, 6);
+    struct test theme_7[100];
+    int n7=readf(theme_7, 7);
+    struct test theme_8[100];
+    int n8=readf(theme_8, 8);
+    
+    for (int i=0; i<8; i++){
+        for (int j=0; j<5; j++){
+            int n=-1;
+            switch(i){
+                case 1: n=n1;break;
+                case 2: n=n2;break;
+                case 3: n=n3;break;
+                case 4: n=n4;break;
+                case 5: n=n5;break;
+                case 6: n=n6;break;
+                case 7: n=n7;break;
+                case 8: n=n8;break;
+            }
+            int number_of_repetitions=0;//количество повторений вопросов
+            do{
+                order_questions[i][j]=rand()%n;//задаём ячейке номер вопроса, который будет учавствовать в тесте
+                for (int e=0; e<j; e++){
+                    if (order_questions[i][j]==order_questions[i][e]){
+                        number_of_repetitions++;
+                    }
+                }
+            }while (number_of_repetitions>0);//пока есть одинаковые вопросы, программа не завершается
+        }
+    }
+    //на данный момент нам известны вопросы, которые мы будем использовать в структуре. Теперь составим структуру финального теста
+    for (int j=0; j<5; j++){
+        for (int i=0; i<8; i++){
+            switch(i){
+                case 1: Final_Proga[j*5+i]=theme_1[i];break;
+                case 2: Final_Proga[j*5+i]=theme_2[i];break;
+                case 3: Final_Proga[j*5+i]=theme_3[i];break;
+                case 4: Final_Proga[j*5+i]=theme_4[i];break;
+                case 5: Final_Proga[j*5+i]=theme_5[i];break;
+                case 6: Final_Proga[j*5+i]=theme_6[i];break;
+                case 7: Final_Proga[j*5+i]=theme_7[i];break;
+                case 8: Final_Proga[j*5+i]=theme_8[i];break;
+            }
+        }
+    }
+    int mass_ans[40]={0};
+    exam(40, mass_ans, Final_Proga);
+    
+    return assessment;
+}
+
+
+//выбор режима работы в меню студента
+int main(void){
+    //выбор режима работы
+    int prg, prg1;
+    do{
+        printf("Выберите режим работы\n 1 - Тренинги и Тесты по темам\n 2 - Итоговый тест\n"); scanf("%d", &prg);
+        if (prg!=1 && prg!=2) printf("Неверный ввод. Попробуйте снова\n");
+    }while (prg!=1 && prg!=2);
+
+    switch(prg){
+        case 1:{
+            do{
+                printf("Выберите режим работы\n 1 - Циклы\n 2 - массивы\n 3 - строки\n 4 - рекурсия\n 5 - структуры\n 6 - файлы\n 7 - адреса и указатели\n 8 - динамическая память"); scanf("%d", &prg1);
+                if (!(prg1>0 && prg1<=8)) printf("Неверный ввод. Попробуйте снова\n");
+            }while (prg1<=0 || prg1>8);
+            switch(prg1){
+                case 1: Working_with_themes(1); break;
+                case 2: Working_with_themes(2); break;
+                case 3: Working_with_themes(3); break;
+                case 4: Working_with_themes(4); break;
+                case 5: Working_with_themes(5); break;
+                case 6: Working_with_themes(6); break;
+                case 7: Working_with_themes(7); break;
+                case 8: Working_with_themes(8); break;
+            } break;}
+        case 2: Final_Test(); break;
+    }
+    
+    
+}
