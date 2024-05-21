@@ -1,45 +1,66 @@
 ﻿#include "MainMenu.h"
 
-int main()
+int main() 
 {
     system("COLOR F0");
     setlocale(LC_ALL, "Rus");
 
-    unsigned short nNumber = 0;
-    do
+    int nNumber = 0;
+    int code;
+
+    do 
     {
-        do
+        do 
         {
             system("cls");
-            printf("Выберите режим работы:\n\n");
-            printf(" 1 - Войти как преподаватель\n");
-            printf(" 2 - Войти как студент\n");
-            printf(" 3 - Оформление командной строки\n\n");
-            printf("Для выхода введите 0.\n");
+            printf("\nВыберите режим работы:\n\n");
 
-            printf("Ваш выбор: ");
-            scanf("%hu", &nNumber);
-            while (getchar() != '\n');
+            if (nNumber == 0) printf("-> 1 - Войти как преподаватель\n");
+            else printf("   1 - Войти как преподаватель\n");
 
-        } while (nNumber < 0 || nNumber > 3);
+            if (nNumber == 1) printf("-> 2 - Войти как студент\n");
+            else printf("   2 - Войти как студент\n");
 
-        switch (nNumber)
+            if (nNumber == 2) printf("-> 3 - Оформление командной строки\n");
+            else printf("   3 - Оформление командной строки\n");
+            
+            if (nNumber == 3) printf("-> 4 - Кнопка выхода\n");
+            else printf("   4 - Кнопка выхода\n");
+
+            code = _getch();
+            if (code == 224) 
+            {
+                code = _getch();
+                if (code == 80)
+                {
+                    nNumber++;
+                }
+                if (code == 72)
+                {
+                    nNumber--;
+                }
+                nNumber = (nNumber + 4) % 4;
+            }
+        } while (code != 13); // 13 - код клавиши Enter
+
+        switch (nNumber) 
         {
-        case 1:
+        case 0:
             AdminLogin();
             Admin_Menu();
             break;
-        case 2:
+        case 1:
             User_Menu();
             break;
-        case 3:
+        case 2:
             ThemeChoice();
             break;
-        case 0:
+        case 3:
+            system("cls");
             printf("Программа успешно завершена!\n");
             return EXIT_SUCCESS;
         }
-    } while (true);
+    } while (1);
 
     return EXIT_SUCCESS;
 }
