@@ -1,0 +1,11 @@
+#include <windows.h>
+createfile()
+"x"
+"x"
+terminatefile()
+file_end()
+"x"
+fprintf()
+scanf()
+"rb", "wb", "ab"
+.png
