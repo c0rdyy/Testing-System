@@ -130,6 +130,7 @@
     <ClCompile Include="Encryption.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Teacher_mode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Encryption.h" />
