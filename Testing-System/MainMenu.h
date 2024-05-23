@@ -9,7 +9,5 @@
 #include <conio.h>
 #include <stdbool.h>
 
-void Admin_Menu();
 void User_Menu();
 void ThemeChoice();
-void AdminLogin();
