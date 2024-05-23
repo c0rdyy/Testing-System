@@ -1,5 +1,6 @@
 ﻿#include "MainMenu.h"
 #include "Encryption.h"
+#include "Teacher_mode.h"
 
 int main() 
 {
@@ -227,8 +228,7 @@ int main()
         switch (nNumber) 
         {
         case 0:
-            AdminLogin();
-            Admin_Menu();
+            teacherMode();
             break;
         case 1:
             User_Menu();

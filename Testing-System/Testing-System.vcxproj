@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="Encryption.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Teacher_mode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

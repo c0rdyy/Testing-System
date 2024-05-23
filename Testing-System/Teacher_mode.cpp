@@ -53,6 +53,8 @@ int teacherMode() {
     char correctPassword[] = "1";
     int choice = 0, filter = 0, t = 0, num = 0;
 
+    printf("\n");
+
     do {
         printf("Введите пароль преподавателя: ");
         scanf_s("%s", password, sizeof(password));
