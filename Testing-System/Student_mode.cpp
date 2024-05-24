@@ -3,32 +3,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-
-// выбор тематики теста
-
-struct list {
-    char student_name[30];
-    char student_surname[30];
-    char login[30];
-    char password[30];
-    int rezult_address;
-    int rezult_array;
-    int rezult_dynamic;
-    int rezult_file;
-    int rezult_loop;
-    int rezult_recursion;
-    int rezult_string;
-    int rezult_structure;
-    int rezult_final;
-};
-
+#include "Student_mode.h"
 int count_of_questions = 0;
-
-struct test {
-    char quest[1000]; // вопросы
-    char ans[4][1000]; // ответы. 1- всегда правильный
-};
-
 int countLinesInFile(const char* filename) {
     FILE* file = fopen(filename, "r");
     if (file == NULL) {
@@ -192,9 +168,9 @@ void tren(int* mass_ans, struct test* proga, int n) {
 
 int exam(int n, int* mass_ans, struct test* proga) {
     int rez = 0, osh = 0;
-    char q_osh[n][1000];
-    char a_osh[n][1000];
-    int n_osh[n];
+    char q_osh[10][1000];
+    char a_osh[10][1000];
+    int n_osh[10];
 
     for (int i = 0; i < n; i++) {
         int que = rand() % count_of_questions;
@@ -279,9 +255,9 @@ int exam(int n, int* mass_ans, struct test* proga) {
 
 int Final_exam(int n, int* mass_ans, struct test* proga) {
     int rez = 0, osh = 0;
-    char q_osh[n][1000];
-    char a_osh[n][1000];
-    int n_osh[n];
+    char q_osh[40][1000];
+    char a_osh[40][1000];
+    int n_osh[40];
 
     for (int i = 0; i < n; i++) {
         int que = i;
@@ -503,13 +479,13 @@ int student_mode(struct list* student, int correct_login) {
     return 0;
 }
 
-int Student_mode(void) {
+void Student_mode() {
     int count_of_lines = countLinesInFile("Students_2.txt");
 
     FILE* file_of_student = fopen("Students_2.txt", "r");
     if (file_of_student == NULL) {
         printf("Error opening student file\n");
-        return 1;
+        return;
     }
 
     struct list students[1000];
@@ -560,7 +536,7 @@ int Student_mode(void) {
     FILE* write_rezults = fopen("Students_2.txt", "w");
     if (write_rezults == NULL) {
         printf("Error opening file for writing\n");
-        return 1;
+        return;
     }
 
     for (int i = 0; i < count_of_lines; i++) {
@@ -581,10 +557,5 @@ int Student_mode(void) {
     }
 
     fclose(write_rezults);
-    return 0;
 }
 
-int main() {
-    Student_mode();
-    return 0;
-}

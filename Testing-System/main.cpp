@@ -231,7 +231,7 @@ int main()
             teacherMode();
             break;
         case 1:
-            StudentMode();
+            Student_mode();
             break;
         case 2:
             ThemeChoice();
