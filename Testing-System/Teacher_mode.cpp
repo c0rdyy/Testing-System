@@ -73,9 +73,7 @@ int teacherMode() {
             edit_que();
         } break;
 
-        case 2: {
-
-            
+        case 2: {        
             int ch2;
             do {
                 printf("|----Работа-со-списком-студентов----|\n");
@@ -95,9 +93,7 @@ int teacherMode() {
                 switch (ch2) {
                 case 1: {
                     int ch3;
-                    do {
-                        printf("СПИСОК СТУДЕНТОВ\n");
-                        list();
+                    do {    
                         printf("|-----------------------------------|\n");
                         printf("|Выберите действие:                 |\n");
                         printf("|                                   |\n");
@@ -113,10 +109,17 @@ int teacherMode() {
                         switch (ch3) {
                         case 1: addStudent(filename); break;
                         case 2: {
-                            printf("Введите логин студента для удаления: ");
                             char studentLogin[50];
-                            scanf("%s", studentLogin);
-                            deleteStudent(filename, studentLogin);
+                            int loginFound = 0;
+                            do {
+                                printf("Введите логин студента для удаления: ");
+                                scanf("%s", studentLogin);
+                                loginFound = deleteStudent(filename, studentLogin);
+                                if (loginFound) printf("Студент с логином %s удален.\n", studentLogin);
+                                if (!loginFound) {
+                                    printf("Студент с логином %s не найден. Повторите попытку.\n", studentLogin);
+                                }
+                            } while (!loginFound);
                         } break;
                         default: printf("Некорректный ввод. Повторите попытку.\n"); break;
                         }
@@ -124,9 +127,14 @@ int teacherMode() {
                 } break;
                 case 2: {
                     char login[50];
-                    printf("Введите логин студента для обновления прогресса: ");
-                    scanf("%s", login);
-                    updateStudentProgress(filename, login);
+                    int loginFound = 0;
+                    do {
+                        printf("Введите логин студента для обновления прогресса: ");
+                        scanf("%s", login);
+                        loginFound = updateStudentProgress(filename, login);
+                        if (loginFound)  printf("Прогресс студента с логином %s обновлен.\n", login);
+                        if (!loginFound) printf("Студент с логином %s не найден. Повторите попытку.\n", login);
+                    } while (!loginFound);
                 } break;
                 case 3: {
                     Student students[100];
@@ -338,6 +346,7 @@ void addStudent(const char* filename) {
     }
     fprintf(file, "\n");
 
+    printf("Новый студент зарегистрирован ");
     fclose(file);
 
     ENCRYPTION1_2(input_2_Students, output_Students, shift);
@@ -346,12 +355,12 @@ void addStudent(const char* filename) {
     //DECRYPTION1(input_Array_ans0, output_Array_ans0, input_Array_ans1, output_Array_ans1, input_Array_ans2, output_Array_ans2, input_Array_ans3, output_Array_ans3, input_Array_quest, output_Array_quest, input_Dynamic_ans0, output_Dynamic_ans0, input_Dynamic_ans1, output_Dynamic_ans1, input_Dynamic_ans2, output_Dynamic_ans2, input_Dynamic_ans3, output_Dynamic_ans3, input_Dynamic_quest, output_Dynamic_quest, input_File_ans0, output_File_ans0, input_File_ans1, output_File_ans1, input_File_ans2, output_File_ans2, input_File_ans3, output_File_ans3, input_File_quest, output_File_quest, input_Loop_ans0, output_Loop_ans0, input_Loop_ans1, output_Loop_ans1, input_Loop_ans2, output_Loop_ans2, input_Loop_ans3, output_Loop_ans3, input_Loop_quest, output_Loop_quest, input_Recursion_ans0, output_Recursion_ans0, input_Recursion_ans1, output_Recursion_ans1, input_Recursion_ans2, output_Recursion_ans2, input_Recursion_ans3, output_Recursion_ans3, input_Recursion_quest, output_Recursion_quest, input_String_ans0, output_String_ans0, input_String_ans1, output_String_ans1, input_String_ans2, output_String_ans2, input_String_ans3, output_String_ans3, input_String_quest, output_String_quest, input_Structure_ans0, output_Structure_ans0, input_Structure_ans1, output_Structure_ans1, input_Structure_ans2, output_Structure_ans2, input_Structure_ans3, output_Structure_ans3, input_Structure_quest, output_Structure_quest, input_Address_ans0, output_Address_ans0, input_Address_ans1, output_Address_ans1, input_Address_ans2, output_Address_ans2, input_Address_ans3, output_Address_ans3, input_Address_quest, output_Address_quest, input_Students, output_Students, shift);
 }
 
-void deleteStudent(const char* filename, const char* login) {
+int deleteStudent(const char* filename, const char* login) {
 
     FILE* file = fopen(filename, "r");
     if (!file) {
         perror("Не удалось открыть файл");
-        return;
+        return 0;
     }
 
     Student students[100];
@@ -385,7 +394,7 @@ void deleteStudent(const char* filename, const char* login) {
         }
 
         if (strcmp(student.login, login) != 0) {
-            students[count++] = student;
+            students[count++] = student;       
         }
     }
     fclose(file);
@@ -393,7 +402,7 @@ void deleteStudent(const char* filename, const char* login) {
     file = fopen(filename, "w");
     if (!file) {
         perror("Не удалось открыть файл");
-        return;
+        return 0;
     }
 
     for (int i = 0; i < count; i++) {
@@ -411,15 +420,15 @@ void deleteStudent(const char* filename, const char* login) {
     //ENCRYPTION1(input_2_Array_ans0, output_Array_ans0, input_2_Array_ans1, output_Array_ans1, input_2_Array_ans2, output_Array_ans2, input_2_Array_ans3, output_Array_ans3, input_2_Array_quest, output_Array_quest, input_2_Dynamic_ans0, output_Dynamic_ans0, input_2_Dynamic_ans1, output_Dynamic_ans1, input_2_Dynamic_ans2, output_Dynamic_ans2, input_2_Dynamic_ans3, output_Dynamic_ans3, input_2_Dynamic_quest, output_Dynamic_quest, input_2_File_ans0, output_File_ans0, input_2_File_ans1, output_File_ans1, input_2_File_ans2, output_File_ans2, input_2_File_ans3, output_File_ans3, input_2_File_quest, output_File_quest, input_2_Loop_ans0, output_Loop_ans0, input_2_Loop_ans1, output_Loop_ans1, input_2_Loop_ans2, output_Loop_ans2, input_2_Loop_ans3, output_Loop_ans3, input_2_Loop_quest, output_Loop_quest, input_2_Recursion_ans0, output_Recursion_ans0, input_2_Recursion_ans1, output_Recursion_ans1, input_2_Recursion_ans2, output_Recursion_ans2, input_2_Recursion_ans3, output_Recursion_ans3, input_2_Recursion_quest, output_Recursion_quest, input_2_String_ans0, output_String_ans0, input_2_String_ans1, output_String_ans1, input_2_String_ans2, output_String_ans2, input_2_String_ans3, output_String_ans3, input_2_String_quest, output_String_quest, input_2_Structure_ans0, output_Structure_ans0, input_2_Structure_ans1, output_Structure_ans1, input_2_Structure_ans2, output_Structure_ans2, input_2_Structure_ans3, output_Structure_ans3, input_2_Structure_quest, output_Structure_quest, input_2_Address_ans0, output_Address_ans0, input_2_Address_ans1, output_Address_ans1, input_2_Address_ans2, output_Address_ans2, input_2_Address_ans3, output_Address_ans3, input_2_Address_quest, output_Address_quest, input_2_Students, output_Students, shift);
     //DECRYPTION1(input_Array_ans0, output_Array_ans0, input_Array_ans1, output_Array_ans1, input_Array_ans2, output_Array_ans2, input_Array_ans3, output_Array_ans3, input_Array_quest, output_Array_quest, input_Dynamic_ans0, output_Dynamic_ans0, input_Dynamic_ans1, output_Dynamic_ans1, input_Dynamic_ans2, output_Dynamic_ans2, input_Dynamic_ans3, output_Dynamic_ans3, input_Dynamic_quest, output_Dynamic_quest, input_File_ans0, output_File_ans0, input_File_ans1, output_File_ans1, input_File_ans2, output_File_ans2, input_File_ans3, output_File_ans3, input_File_quest, output_File_quest, input_Loop_ans0, output_Loop_ans0, input_Loop_ans1, output_Loop_ans1, input_Loop_ans2, output_Loop_ans2, input_Loop_ans3, output_Loop_ans3, input_Loop_quest, output_Loop_quest, input_Recursion_ans0, output_Recursion_ans0, input_Recursion_ans1, output_Recursion_ans1, input_Recursion_ans2, output_Recursion_ans2, input_Recursion_ans3, output_Recursion_ans3, input_Recursion_quest, output_Recursion_quest, input_String_ans0, output_String_ans0, input_String_ans1, output_String_ans1, input_String_ans2, output_String_ans2, input_String_ans3, output_String_ans3, input_String_quest, output_String_quest, input_Structure_ans0, output_Structure_ans0, input_Structure_ans1, output_Structure_ans1, input_Structure_ans2, output_Structure_ans2, input_Structure_ans3, output_Structure_ans3, input_Structure_quest, output_Structure_quest, input_Address_ans0, output_Address_ans0, input_Address_ans1, output_Address_ans1, input_Address_ans2, output_Address_ans2, input_Address_ans3, output_Address_ans3, input_Address_quest, output_Address_quest, input_Students, output_Students, shift);
 
-    printf("Студент с логином %s удален.\n", login);
+    return 0;
 }
 
-void updateStudentProgress(const char* filename, const char* login) {
+int updateStudentProgress(const char* filename, const char* login) {
 
     FILE* file = fopen(filename, "r");
     if (!file) {
         perror("Не удалось открыть файл");
-        return;
+        return 0;
     }
 
     Student students[100];
@@ -476,7 +485,7 @@ void updateStudentProgress(const char* filename, const char* login) {
     file = fopen(filename, "w");
     if (!file) {
         perror("Не удалось открыть файл");
-        return;
+        return 0;
     }
 
     for (int i = 0; i < count; i++) {
@@ -491,10 +500,9 @@ void updateStudentProgress(const char* filename, const char* login) {
 
     ENCRYPTION1_2(input_2_Students, output_Students, shift);
     DECRYPTION1_2(input_Students, output_Students, shift);
+    return 0;
     //ENCRYPTION1(input_2_Array_ans0, output_Array_ans0, input_2_Array_ans1, output_Array_ans1, input_2_Array_ans2, output_Array_ans2, input_2_Array_ans3, output_Array_ans3, input_2_Array_quest, output_Array_quest, input_2_Dynamic_ans0, output_Dynamic_ans0, input_2_Dynamic_ans1, output_Dynamic_ans1, input_2_Dynamic_ans2, output_Dynamic_ans2, input_2_Dynamic_ans3, output_Dynamic_ans3, input_2_Dynamic_quest, output_Dynamic_quest, input_2_File_ans0, output_File_ans0, input_2_File_ans1, output_File_ans1, input_2_File_ans2, output_File_ans2, input_2_File_ans3, output_File_ans3, input_2_File_quest, output_File_quest, input_2_Loop_ans0, output_Loop_ans0, input_2_Loop_ans1, output_Loop_ans1, input_2_Loop_ans2, output_Loop_ans2, input_2_Loop_ans3, output_Loop_ans3, input_2_Loop_quest, output_Loop_quest, input_2_Recursion_ans0, output_Recursion_ans0, input_2_Recursion_ans1, output_Recursion_ans1, input_2_Recursion_ans2, output_Recursion_ans2, input_2_Recursion_ans3, output_Recursion_ans3, input_2_Recursion_quest, output_Recursion_quest, input_2_String_ans0, output_String_ans0, input_2_String_ans1, output_String_ans1, input_2_String_ans2, output_String_ans2, input_2_String_ans3, output_String_ans3, input_2_String_quest, output_String_quest, input_2_Structure_ans0, output_Structure_ans0, input_2_Structure_ans1, output_Structure_ans1, input_2_Structure_ans2, output_Structure_ans2, input_2_Structure_ans3, output_Structure_ans3, input_2_Structure_quest, output_Structure_quest, input_2_Address_ans0, output_Address_ans0, input_2_Address_ans1, output_Address_ans1, input_2_Address_ans2, output_Address_ans2, input_2_Address_ans3, output_Address_ans3, input_2_Address_quest, output_Address_quest, input_2_Students, output_Students, shift);
     //DECRYPTION1(input_Array_ans0, output_Array_ans0, input_Array_ans1, output_Array_ans1, input_Array_ans2, output_Array_ans2, input_Array_ans3, output_Array_ans3, input_Array_quest, output_Array_quest, input_Dynamic_ans0, output_Dynamic_ans0, input_Dynamic_ans1, output_Dynamic_ans1, input_Dynamic_ans2, output_Dynamic_ans2, input_Dynamic_ans3, output_Dynamic_ans3, input_Dynamic_quest, output_Dynamic_quest, input_File_ans0, output_File_ans0, input_File_ans1, output_File_ans1, input_File_ans2, output_File_ans2, input_File_ans3, output_File_ans3, input_File_quest, output_File_quest, input_Loop_ans0, output_Loop_ans0, input_Loop_ans1, output_Loop_ans1, input_Loop_ans2, output_Loop_ans2, input_Loop_ans3, output_Loop_ans3, input_Loop_quest, output_Loop_quest, input_Recursion_ans0, output_Recursion_ans0, input_Recursion_ans1, output_Recursion_ans1, input_Recursion_ans2, output_Recursion_ans2, input_Recursion_ans3, output_Recursion_ans3, input_Recursion_quest, output_Recursion_quest, input_String_ans0, output_String_ans0, input_String_ans1, output_String_ans1, input_String_ans2, output_String_ans2, input_String_ans3, output_String_ans3, input_String_quest, output_String_quest, input_Structure_ans0, output_Structure_ans0, input_Structure_ans1, output_Structure_ans1, input_Structure_ans2, output_Structure_ans2, input_Structure_ans3, output_Structure_ans3, input_Structure_quest, output_Structure_quest, input_Address_ans0, output_Address_ans0, input_Address_ans1, output_Address_ans1, input_Address_ans2, output_Address_ans2, input_Address_ans3, output_Address_ans3, input_Address_quest, output_Address_quest, input_Students, output_Students, shift);
-
-    printf("Прогресс студента с логином %s обновлен.\n", login);
 }
 
 void printAllThemes(Student* students, int count, int filter) {

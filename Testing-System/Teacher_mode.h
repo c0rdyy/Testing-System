@@ -11,9 +11,9 @@ typedef struct {
 
 
 int list();
-void deleteStudent(const char* filename, const char* login);
+int deleteStudent(const char* filename, const char* login);
 void addStudent(const char* filename);
-void updateStudentProgress(const char* filename, const char* login);
+int updateStudentProgress(const char* filename, const char* login);
 int readStudentData(const char* filename, Student* students);
 void printAllThemes(Student* students, int count, int filter);
 void printCurTheme(Student* students, int count, int theme, int filter);
