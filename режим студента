@@ -12,15 +12,15 @@ struct list{
     char student_surname[30];
     char login[30];
     char password[30];
-    int *rezult_address;
-    int *rezult_array;
-    int *rezult_dynamic;
-    int *rezult_file;
-    int *rezult_loop;
-    int *rezult_recursion;
-    int *rezult_string;
-    int *rezult_structure;
-    int *rezult_final;
+    int rezult_address;
+    int rezult_array;
+    int rezult_dynamic;
+    int rezult_file;
+    int rezult_loop;
+    int rezult_recursion;
+    int rezult_string;
+    int rezult_structure;
+    int rezult_final;
 };
 
 
@@ -432,7 +432,6 @@ int Working_with_themes(int x)
 
 int Final_Test(void){
     
-    int assessment=0;//оценка
     int order_questions[8][5]={23456};//8 строк, 5 столбцов. 8-темы. 5-номера вопросов.
     struct test Final_Proga[40];
 
