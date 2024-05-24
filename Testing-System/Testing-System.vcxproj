@@ -135,6 +135,7 @@
     <ClCompile Include="Teacher_mode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CHAR.h" />
     <ClInclude Include="EditQ.h" />
     <ClInclude Include="Encryption.h" />
     <ClInclude Include="MainMenu.h" />

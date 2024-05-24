@@ -10,7 +10,6 @@ int main()
 
     int shift = 3;
 
-
     char input_Array_ans0[] = "Array.ans0.txt";
     char output_Array_ans0[] = "Array.ans0_1.txt";
     char input_2_Array_ans0[] = "Array.ans0_2.txt";
