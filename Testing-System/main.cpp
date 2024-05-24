@@ -1,6 +1,7 @@
 ﻿#include "MainMenu.h"
 #include "Encryption.h"
 #include "Teacher_mode.h"
+#include "Student_mode.h"
 
 int main() 
 {
@@ -231,7 +232,7 @@ int main()
             teacherMode();
             break;
         case 1:
-            User_Menu();
+            StudentMode();
             break;
         case 2:
             ThemeChoice();
