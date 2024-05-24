@@ -177,6 +177,11 @@ void DECRYPTION(char* input_2_Array_ans0, char* output_Array_ans0, char* input_2
     DecryptFile(output_Students, input_2_Students, shift);
 }
 
+void DECRYPTION2(char* input_2_Students, char* output_Students, int shift)
+{
+    DecryptFile(output_Students, input_2_Students, shift);
+}
+
 void ENCRYPTION1(char* input_2_Array_ans0, char* output_Array_ans0, char* input_2_Array_ans1, char* output_Array_ans1, char* input_2_Array_ans2, char* output_Array_ans2, char* input_2_Array_ans3, char* output_Array_ans3, char* input_2_Array_quest, char* output_Array_quest, char* input_2_Dynamic_ans0, char* output_Dynamic_ans0, char* input_2_Dynamic_ans1, char* output_Dynamic_ans1, char* input_2_Dynamic_ans2, char* output_Dynamic_ans2, char* input_2_Dynamic_ans3, char* output_Dynamic_ans3, char* input_2_Dynamic_quest, char* output_Dynamic_quest, char* input_2_File_ans0, char* output_File_ans0, char* input_2_File_ans1, char* output_File_ans1, char* input_2_File_ans2, char* output_File_ans2, char* input_2_File_ans3, char* output_File_ans3, char* input_2_File_quest, char* output_File_quest, char* input_2_Loop_ans0, char* output_Loop_ans0, char* input_2_Loop_ans1, char* output_Loop_ans1, char* input_2_Loop_ans2, char* output_Loop_ans2, char* input_2_Loop_ans3, char* output_Loop_ans3, char* input_2_Loop_quest, char* output_Loop_quest, char* input_2_Recursion_ans0, char* output_Recursion_ans0, char* input_2_Recursion_ans1, char* output_Recursion_ans1, char* input_2_Recursion_ans2, char* output_Recursion_ans2, char* input_2_Recursion_ans3, char* output_Recursion_ans3, char* input_2_Recursion_quest, char* output_Recursion_quest, char* input_2_String_ans0, char* output_String_ans0, char* input_2_String_ans1, char* output_String_ans1, char* input_2_String_ans2, char* output_String_ans2, char* input_2_String_ans3, char* output_String_ans3, char* input_2_String_quest, char* output_String_quest, char* input_2_Structure_ans0, char* output_Structure_ans0, char* input_2_Structure_ans1, char* output_Structure_ans1, char* input_2_Structure_ans2, char* output_Structure_ans2, char* input_2_Structure_ans3, char* output_Structure_ans3, char* input_2_Structure_quest, char* output_Structure_quest, char* input_2_Address_ans0, char* output_Address_ans0, char* input_2_Address_ans1, char* output_Address_ans1, char* input_2_Address_ans2, char* output_Address_ans2, char* input_2_Address_ans3, char* output_Address_ans3, char* input_2_Address_quest, char* output_Address_quest, char* input_2_Students, char* output_Students, int shift)
 {
     EncryptFile(input_2_Array_ans0, output_Array_ans0, shift);
@@ -227,6 +232,11 @@ void ENCRYPTION1(char* input_2_Array_ans0, char* output_Array_ans0, char* input_
     EncryptFile(input_2_Address_ans3, output_Address_ans3, shift);
     EncryptFile(input_2_Address_quest, output_Address_quest, shift);
 
+    EncryptFile(input_2_Students, output_Students, shift);
+}
+
+void ENCRYPTION1_2(char* input_2_Students, char* output_Students, int shift)
+{
     EncryptFile(input_2_Students, output_Students, shift);
 }
 
@@ -283,3 +293,7 @@ void DECRYPTION1(char* input_Array_ans0, char* output_Array_ans0, char* input_Ar
     DecryptFile(output_Students, input_Students, shift);
 }
 
+void DECRYPTION1_2(char* input_Students, char* output_Students, int shift)
+{
+    DecryptFile(output_Students, input_Students, shift);
+}
