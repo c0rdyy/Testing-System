@@ -9,7 +9,7 @@ void readf(struct taskList* theme1, int th) {
     case 1: //Адрес
 
         FILE * f1;
-        fopen_s(&f1, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.quest_2.txt", "r");
+        fopen_s(&f1, "Address.quest_2.txt", "r");
         if (!f1) {
             printf("Файл не найден.\n");
         }
@@ -25,7 +25,7 @@ void readf(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f01;
-        fopen_s(&f01, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans0_2.txt", "r");
+        fopen_s(&f01, "Address.ans0_2.txt", "r");
         if (f01) {
             for (int i = 0; !feof(f01); i++) {
                 fgets(theme1->tasks[i].ans[0], 1000, f01);
@@ -35,7 +35,7 @@ void readf(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f11;
-        fopen_s(&f11, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans1_2.txt", "r");
+        fopen_s(&f11, "Address.ans1_2.txt", "r");
         if (f11) {
             for (int i = 0; !feof(f11); i++) {
                 fgets(theme1->tasks[i].ans[1], 1000, f11);
@@ -45,7 +45,7 @@ void readf(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f21;
-        fopen_s(&f21, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans2_2.txt", "r");
+        fopen_s(&f21, "Address.ans2_2.txt", "r");
         if (f21) {
             for (int i = 0; !feof(f21); i++) {
                 fgets(theme1->tasks[i].ans[2], 1000, f21);
@@ -55,7 +55,7 @@ void readf(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f31;
-        fopen_s(&f31, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans3_2.txt", "r");
+        fopen_s(&f31, "Address.ans3_2.txt", "r");
         if (f31) {
             for (int i = 0; !feof(f31); i++) {
                 fgets(theme1->tasks[i].ans[3], 1000, f31);
@@ -67,7 +67,7 @@ void readf(struct taskList* theme1, int th) {
     case 2: //Массив
 
         FILE * f2;
-        fopen_s(&f2, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.quest_2.txt", "r");
+        fopen_s(&f2, "Array.quest_2.txt", "r");
         if (!f2) {
             printf("Файл не найден.\n");
         }
@@ -81,7 +81,7 @@ void readf(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f02;
-        fopen_s(&f02, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans0_2.txt", "r");
+        fopen_s(&f02, "Array.ans0_2.txt", "r");
         if (f02) {
             for (int i = 0; !feof(f02); i++) {
                 fgets(theme1->tasks[i].ans[0], 1000, f02);
@@ -91,7 +91,7 @@ void readf(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f12;
-        fopen_s(&f12, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans1_2.txt", "r");
+        fopen_s(&f12, "Array.ans1_2.txt", "r");
         if (f12) {
             for (int i = 0; !feof(f12); i++) {
                 fgets(theme1->tasks[i].ans[1], 1000, f12);
@@ -101,7 +101,7 @@ void readf(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f22;
-        fopen_s(&f22, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans2_2.txt", "r");
+        fopen_s(&f22, "Array.ans2_2.txt", "r");
         if (f22) {
             for (int i = 0; !feof(f22); i++) {
                 fgets(theme1->tasks[i].ans[2], 1000, f22);
@@ -111,7 +111,7 @@ void readf(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f32;
-        fopen_s(&f32, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans3_2.txt", "r");
+        fopen_s(&f32, "Array.ans3_2.txt", "r");
         if (f32) {
             for (int i = 0; !feof(f32); i++) {
                 fgets(theme1->tasks[i].ans[3], 1000, f32);
@@ -123,7 +123,7 @@ void readf(struct taskList* theme1, int th) {
     case 3: //Динамическая структура данных
 
         FILE * f3;
-        fopen_s(&f3, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.quest_2.txt", "r");
+        fopen_s(&f3, "Dynamic.quest_2.txt", "r");
         if (!f3) {
             printf("Файл не найден.\n");
         }
@@ -137,7 +137,7 @@ void readf(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f03;
-        fopen_s(&f03, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans0_2.txt", "r");
+        fopen_s(&f03, "Dynamic.ans0_2.txt", "r");
         if (f03) {
             for (int i = 0; !feof(f03); i++) {
                 fgets(theme1->tasks[i].ans[0], 1000, f03);
@@ -147,7 +147,7 @@ void readf(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f13;
-        fopen_s(&f13, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans1_2.txt", "r");
+        fopen_s(&f13, "Dynamic.ans1_2.txt", "r");
         if (f13) {
             for (int i = 0; !feof(f13); i++) {
                 fgets(theme1->tasks[i].ans[1], 1000, f13);
@@ -157,7 +157,7 @@ void readf(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f23;
-        fopen_s(&f23, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans2_2.txt", "r");
+        fopen_s(&f23, "Dynamic.ans2_2.txt", "r");
         if (f23) {
             for (int i = 0; !feof(f23); i++) {
                 fgets(theme1->tasks[i].ans[2], 1000, f23);
@@ -167,7 +167,7 @@ void readf(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f33;
-        fopen_s(&f33, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans3_2.txt", "r");
+        fopen_s(&f33, "Dynamic.ans3_2.txt", "r");
         if (f33) {
             for (int i = 0; !feof(f33); i++) {
                 fgets(theme1->tasks[i].ans[3], 1000, f33);
@@ -179,7 +179,7 @@ void readf(struct taskList* theme1, int th) {
     case 4: //Файл
 
         FILE * f4;
-        fopen_s(&f4, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.quest_2.txt", "r");
+        fopen_s(&f4, "File.quest_2.txt", "r");
         if (!f4) {
             printf("Файл не найден.\n");
         }
@@ -193,7 +193,7 @@ void readf(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f04;
-        fopen_s(&f04, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans0_2.txt", "r");
+        fopen_s(&f04, "File.ans0_2.txt", "r");
         if (f04) {
             for (int i = 0; !feof(f04); i++) {
                 fgets(theme1->tasks[i].ans[0], 1000, f04);
@@ -203,7 +203,7 @@ void readf(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f14;
-        fopen_s(&f14, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans1_2.txt", "r");
+        fopen_s(&f14, "File.ans1_2.txt", "r");
         if (f14) {
             for (int i = 0; !feof(f14); i++) {
                 fgets(theme1->tasks[i].ans[1], 1000, f14);
@@ -213,7 +213,7 @@ void readf(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f24;
-        fopen_s(&f24, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans2_2.txt", "r");
+        fopen_s(&f24, "File.ans2_2.txt", "r");
         if (f24) {
             for (int i = 0; !feof(f24); i++) {
                 fgets(theme1->tasks[i].ans[2], 1000, f24);
@@ -223,7 +223,7 @@ void readf(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f34;
-        fopen_s(&f34, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans3_2.txt", "r");
+        fopen_s(&f34, "File.ans3_2.txt", "r");
         if (f34) {
             for (int i = 0; !feof(f34); i++) {
                 fgets(theme1->tasks[i].ans[3], 1000, f34);
@@ -235,7 +235,7 @@ void readf(struct taskList* theme1, int th) {
     case 5: //Цикл
 
         FILE * f5;
-        fopen_s(&f5, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.quest_2.txt", "r");
+        fopen_s(&f5, "Loop.quest_2.txt", "r");
         if (!f5) {
             printf("Файл не найден.\n");
         }
@@ -249,7 +249,7 @@ void readf(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f05;
-        fopen_s(&f05, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans0_2.txt", "r");
+        fopen_s(&f05, "Loop.ans0_2.txt", "r");
         if (f05) {
             for (int i = 0; !feof(f05); i++) {
                 fgets(theme1->tasks[i].ans[0], 1000, f05);
@@ -259,7 +259,7 @@ void readf(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f15;
-        fopen_s(&f15, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans1_2.txt", "r");
+        fopen_s(&f15, "Loop.ans1_2.txt", "r");
         if (f15) {
             for (int i = 0; !feof(f15); i++) {
                 fgets(theme1->tasks[i].ans[1], 1000, f15);
@@ -269,7 +269,7 @@ void readf(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f25;
-        fopen_s(&f25, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans2_2.txt", "r");
+        fopen_s(&f25, "Loop.ans2_2.txt", "r");
         if (f25) {
             for (int i = 0; !feof(f25); i++) {
                 fgets(theme1->tasks[i].ans[2], 1000, f25);
@@ -279,7 +279,7 @@ void readf(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f35;
-        fopen_s(&f35, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans3_2.txt", "r");
+        fopen_s(&f35, "Loop.ans3_2.txt", "r");
         if (f35) {
             for (int i = 0; !feof(f35); i++) {
                 fgets(theme1->tasks[i].ans[3], 1000, f35);
@@ -291,7 +291,7 @@ void readf(struct taskList* theme1, int th) {
     case 6: //Рекурсия
 
         FILE * f6;
-        fopen_s(&f6, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.quest_2.txt", "r");
+        fopen_s(&f6, "Recursion.quest_2.txt", "r");
         if (!f6) {
             printf("Файл не найден.\n");
         }
@@ -305,7 +305,7 @@ void readf(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f06;
-        fopen_s(&f06, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans0_2.txt", "r");
+        fopen_s(&f06, "Recursion.ans0_2.txt", "r");
         if (f06) {
             for (int i = 0; !feof(f06); i++) {
                 fgets(theme1->tasks[i].ans[0], 1000, f06);
@@ -315,7 +315,7 @@ void readf(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f16;
-        fopen_s(&f16, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans1_2.txt", "r");
+        fopen_s(&f16, "Recursion.ans1_2.txt", "r");
         if (f16) {
             for (int i = 0; !feof(f16); i++) {
                 fgets(theme1->tasks[i].ans[1], 1000, f16);
@@ -325,7 +325,7 @@ void readf(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f26;
-        fopen_s(&f26, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans2_2.txt", "r");
+        fopen_s(&f26, "Recursion.ans2_2.txt", "r");
         if (f26) {
             for (int i = 0; !feof(f26); i++) {
                 fgets(theme1->tasks[i].ans[2], 1000, f26);
@@ -335,7 +335,7 @@ void readf(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f36;
-        fopen_s(&f36, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans3_2.txt", "r");
+        fopen_s(&f36, "Recursion.ans3_2.txt", "r");
         if (f36) {
             for (int i = 0; !feof(f36); i++) {
                 fgets(theme1->tasks[i].ans[3], 1000, f36);
@@ -347,7 +347,7 @@ void readf(struct taskList* theme1, int th) {
     case 7: //Строки
 
         FILE * f7;
-        fopen_s(&f7, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.quest_2.txt", "r");
+        fopen_s(&f7, "String.quest_2.txt", "r");
         if (!f7) {
             printf("Файл не найден.\n");
         }
@@ -361,7 +361,7 @@ void readf(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f07;
-        fopen_s(&f07, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans0_2.txt", "r");
+        fopen_s(&f07, "String.ans0_2.txt", "r");
         if (f07) {
             for (int i = 0; !feof(f07); i++) {
                 fgets(theme1->tasks[i].ans[0], 1000, f07);
@@ -371,7 +371,7 @@ void readf(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f17;
-        fopen_s(&f17, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans1_2.txt", "r");
+        fopen_s(&f17, "String.ans1_2.txt", "r");
         if (f17) {
             for (int i = 0; !feof(f17); i++) {
                 fgets(theme1->tasks[i].ans[1], 1000, f17);
@@ -381,7 +381,7 @@ void readf(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f27;
-        fopen_s(&f27, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans2_2.txt", "r");
+        fopen_s(&f27, "String.ans2_2.txt", "r");
         if (f27) {
             for (int i = 0; !feof(f27); i++) {
                 fgets(theme1->tasks[i].ans[2], 1000, f27);
@@ -391,7 +391,7 @@ void readf(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f37;
-        fopen_s(&f37, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans3_2.txt", "r");
+        fopen_s(&f37, "String.ans3_2.txt", "r");
         if (f37) {
             for (int i = 0; !feof(f37); i++) {
                 fgets(theme1->tasks[i].ans[3], 1000, f37);
@@ -403,7 +403,7 @@ void readf(struct taskList* theme1, int th) {
     case 8: //Структура
 
         FILE * f8;
-        fopen_s(&f8, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.quest_2.txt", "r");
+        fopen_s(&f8, "Structure.quest_2.txt", "r");
         if (!f8) {
             printf("Файл не найден.\n");
         }
@@ -417,7 +417,7 @@ void readf(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f08;
-        fopen_s(&f08, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans0_2.txt", "r");
+        fopen_s(&f08, "Structure.ans0_2.txt", "r");
         if (f08) {
             for (int i = 0; !feof(f08); i++) {
                 fgets(theme1->tasks[i].ans[0], 1000, f08);
@@ -427,7 +427,7 @@ void readf(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f18;
-        fopen_s(&f18, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans1_2.txt", "r");
+        fopen_s(&f18, "Structure.ans1_2.txt", "r");
         if (f18) {
             for (int i = 0; !feof(f18); i++) {
                 fgets(theme1->tasks[i].ans[1], 1000, f18);
@@ -437,7 +437,7 @@ void readf(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f28;
-        fopen_s(&f28, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans2_2.txt", "r");
+        fopen_s(&f28, "Structure.ans2_2.txt", "r");
         if (f28) {
             for (int i = 0; !feof(f28); i++) {
                 fgets(theme1->tasks[i].ans[2], 1000, f28);
@@ -447,7 +447,7 @@ void readf(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f38;
-        fopen_s(&f38, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans3_2.txt", "r");
+        fopen_s(&f38, "Structure.ans3_2.txt", "r");
         if (f38) {
             for (int i = 0; !feof(f38); i++) {
                 fgets(theme1->tasks[i].ans[3], 1000, f38);
@@ -564,7 +564,7 @@ void write_into_f(struct taskList* theme1, int th) {
     case 1:
 
         FILE * f1;
-        fopen_s(&f1, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.quest_2.txt", "w");
+        fopen_s(&f1, "Address.quest_2.txt", "w");
         if (!f1) {
             printf("Файл не найден.\n");
         }
@@ -586,7 +586,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f01;
-        fopen_s(&f01, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans0_2.txt", "w");
+        fopen_s(&f01, "Address.ans0_2.txt", "w");
         if (f01) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -605,7 +605,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f11;
-        fopen_s(&f11, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans1_2.txt", "w");
+        fopen_s(&f11, "Address.ans1_2.txt", "w");
         if (f11) {
 
             for (int i = 0; i < theme1->size; i++) {
@@ -625,7 +625,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f21;
-        fopen_s(&f21, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans2_2.txt", "w");
+        fopen_s(&f21, "Address.ans2_2.txt", "w");
         if (f21) {
 
             for (int i = 0; i < theme1->size; i++) {
@@ -645,7 +645,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f31;
-        fopen_s(&f31, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans3_2.txt", "w");
+        fopen_s(&f31, "Address.ans3_2.txt", "w");
         if (f31) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -666,7 +666,7 @@ void write_into_f(struct taskList* theme1, int th) {
     case 2:
 
         FILE * f2;
-        fopen_s(&f2, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.quest_2.txt", "w");
+        fopen_s(&f2, "Array.quest_2.txt", "w");
         if (!f2) {
             printf("Файл не найден.\n");
         }
@@ -688,7 +688,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f02;
-        fopen_s(&f02, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans0_2.txt", "w");
+        fopen_s(&f02, "Array.ans0_2.txt", "w");
         if (f02) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -707,7 +707,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f12;
-        fopen_s(&f12, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans1_2.txt", "w");
+        fopen_s(&f12, "Array.ans1_2.txt", "w");
         if (f12) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -726,7 +726,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f22;
-        fopen_s(&f22, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans2_2.txt", "w");
+        fopen_s(&f22, "Array.ans2_2.txt", "w");
         if (f22) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -745,7 +745,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f32;
-        fopen_s(&f32, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans3_2.txt", "w");
+        fopen_s(&f32, "Array.ans3_2.txt", "w");
         if (f32) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -766,7 +766,7 @@ void write_into_f(struct taskList* theme1, int th) {
     case 3:
 
         FILE * f3;
-        fopen_s(&f3, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.quest_2.txt", "w");
+        fopen_s(&f3, "Dynamic.quest_2.txt", "w");
         if (!f3) {
             printf("Файл не найден.\n");
         }
@@ -788,7 +788,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f03;
-        fopen_s(&f03, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans0_2.txt", "w");
+        fopen_s(&f03, "Dynamic.ans0_2.txt", "w");
         if (f03) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -807,7 +807,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f13;
-        fopen_s(&f13, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans1_2.txt", "w");
+        fopen_s(&f13, "Dynamic.ans1_2.txt", "w");
         if (f13) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -826,7 +826,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f23;
-        fopen_s(&f23, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans2_2.txt", "w");
+        fopen_s(&f23, "Dynamic.ans2_2.txt", "w");
         if (f23) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -845,7 +845,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f33;
-        fopen_s(&f33, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans3_2.txt", "w");
+        fopen_s(&f33, "Dynamic.ans3_2.txt", "w");
         if (f33) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -866,7 +866,7 @@ void write_into_f(struct taskList* theme1, int th) {
     case 4:
 
         FILE * f4;
-        fopen_s(&f4, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.quest_2.txt", "w");
+        fopen_s(&f4, "File.quest_2.txt", "w");
         if (!f4) {
             printf("Файл не найден.\n");
         }
@@ -888,7 +888,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f04;
-        fopen_s(&f04, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans0_2.txt", "w");
+        fopen_s(&f04, "File.ans0_2.txt", "w");
         if (f04) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -907,7 +907,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f14;
-        fopen_s(&f14, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans1_2.txt", "w");
+        fopen_s(&f14, "File.ans1_2.txt", "w");
         if (f14) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -926,7 +926,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f24;
-        fopen_s(&f24, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans2_2.txt", "w");
+        fopen_s(&f24, "File.ans2_2.txt", "w");
         if (f24) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -945,7 +945,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f34;
-        fopen_s(&f34, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans3_2.txt", "w");
+        fopen_s(&f34, "File.ans3_2.txt", "w");
         if (f34) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -966,7 +966,7 @@ void write_into_f(struct taskList* theme1, int th) {
     case 5:
 
         FILE * f5;
-        fopen_s(&f5, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.quest_2.txt", "w");
+        fopen_s(&f5, "Loop.quest_2.txt", "w");
         if (!f5) {
             printf("Файл не найден.\n");
         }
@@ -988,7 +988,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f05;
-        fopen_s(&f05, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans0_2.txt", "w");
+        fopen_s(&f05, "Loop.ans0_2.txt", "w");
         if (f05) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1007,7 +1007,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f15;
-        fopen_s(&f15, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans1_2.txt", "w");
+        fopen_s(&f15, "Loop.ans1_2.txt", "w");
         if (f15) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1026,7 +1026,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f25;
-        fopen_s(&f25, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans2_2.txt", "w");
+        fopen_s(&f25, "Loop.ans2_2.txt", "w");
         if (f25) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1045,7 +1045,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f35;
-        fopen_s(&f35, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans3_2.txt", "w");
+        fopen_s(&f35, "Loop.ans3_2.txt", "w");
         if (f35) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1066,7 +1066,7 @@ void write_into_f(struct taskList* theme1, int th) {
     case 6:
 
         FILE * f6;
-        fopen_s(&f6, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.quest_2.txt", "w");
+        fopen_s(&f6, "Recursion.quest_2.txt", "w");
         if (!f6) {
             printf("Файл не найден.\n");
         }
@@ -1088,7 +1088,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f06;
-        fopen_s(&f06, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans0_2.txt", "w");
+        fopen_s(&f06, "Recursion.ans0_2.txt", "w");
         if (f06) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1107,7 +1107,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f16;
-        fopen_s(&f16, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans1_2.txt", "w");
+        fopen_s(&f16, "Recursion.ans1_2.txt", "w");
         if (f16) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1126,7 +1126,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f26;
-        fopen_s(&f26, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans2_2.txt", "w");
+        fopen_s(&f26, "Recursion.ans2_2.txt", "w");
         if (f26) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1145,7 +1145,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f36;
-        fopen_s(&f36, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans3_2.txt", "w");
+        fopen_s(&f36, "Recursion.ans3_2.txt", "w");
         if (f36) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1167,7 +1167,7 @@ void write_into_f(struct taskList* theme1, int th) {
     case 7:
 
         FILE * f7;
-        fopen_s(&f7, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.quest_2.txt", "w");
+        fopen_s(&f7, "String.quest_2.txt", "w");
         if (!f7) {
             printf("Файл не найден.\n");
         }
@@ -1189,7 +1189,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f07;
-        fopen_s(&f07, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans0_2.txt", "w");
+        fopen_s(&f07, "String.ans0_2.txt", "w");
         if (f07) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1208,7 +1208,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f17;
-        fopen_s(&f17, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans1_2.txt", "w");
+        fopen_s(&f17, "String.ans1_2.txt", "w");
         if (f17) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1227,7 +1227,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f27;
-        fopen_s(&f27, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans2_2.txt", "w");
+        fopen_s(&f27, "String.ans2_2.txt", "w");
         if (f27) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1246,7 +1246,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f37;
-        fopen_s(&f37, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans3_2.txt", "w");
+        fopen_s(&f37, "String.ans3_2.txt", "w");
         if (f37) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1267,7 +1267,7 @@ void write_into_f(struct taskList* theme1, int th) {
     case 8:
 
         FILE * f8;
-        fopen_s(&f8, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.quest_2.txt", "w");
+        fopen_s(&f8, "Structure.quest_2.txt", "w");
         if (!f8) {
             printf("Файл не найден.\n");
         }
@@ -1289,7 +1289,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //1 ответ (правильный)
         FILE* f08;
-        fopen_s(&f08, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans0_2.txt", "w");
+        fopen_s(&f08, "Structure.ans0_2.txt", "w");
         if (f08) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1308,7 +1308,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //2 ответ
         FILE* f18;
-        fopen_s(&f18, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans1_2.txt", "w");
+        fopen_s(&f18, "Structure.ans1_2.txt", "w");
         if (f18) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1327,7 +1327,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //3 ответ
         FILE* f28;
-        fopen_s(&f28, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans2_2.txt", "w");
+        fopen_s(&f28, "Structure.ans2_2.txt", "w");
         if (f28) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
@@ -1346,7 +1346,7 @@ void write_into_f(struct taskList* theme1, int th) {
 
         //4 ответ
         FILE* f38;
-        fopen_s(&f38, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans3_2.txt", "w");
+        fopen_s(&f38, "Structure.ans3_2.txt", "w");
         if (f38) {
             for (int i = 0; i < theme1->size; i++) {
                 if (i < theme1->size - 1) {
