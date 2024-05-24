@@ -489,9 +489,17 @@ void del_question(struct taskList* theme1, int th, int num) {
 }
 
 void print_que(struct taskList* theme1, int num) {
-    printf("Вопрос %d: %s\n", num + 1, theme1->tasks[num].quest);
-    for (int j = 0; j < 4; j++) {
-        printf("%d. %s\n", j + 1, theme1->tasks[num].ans[j]);
+    if (num != theme1->size - 1) {
+        printf("Вопрос %d: %s\n", num + 1, theme1->tasks[num].quest);
+        for (int j = 0; j < 4; j++) {
+            printf("%d. %s\n", j + 1, theme1->tasks[num].ans[j]);
+        }
+    }
+    else {
+        printf("Вопрос %d: %s\n\n", num + 1, theme1->tasks[num].quest);
+        for (int j = 0; j < 4; j++) {
+            printf("%d. %s\n\n", j + 1, theme1->tasks[num].ans[j]);
+        }
     }
 }
 
@@ -506,27 +514,27 @@ void edit_question(struct taskList* theme1, int num) {
         case 0:
             printf("Ввод: ");
             gets_s(theme1->tasks[num].quest);
-            strcat_s(theme1->tasks[num].quest, add_line);
+            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].quest, add_line); }
             break;
         case 1:
             printf("Ввод: ");
             gets_s(theme1->tasks[num].ans[0]);
-            strcat_s(theme1->tasks[num].ans[0], add_line);
+            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[0], add_line); }
             break;
         case 2:
             printf("Ввод: ");
             gets_s(theme1->tasks[num].ans[1]);
-            strcat_s(theme1->tasks[num].ans[1], add_line);
+            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[1], add_line); }
             break;
         case 3:
             printf("Ввод: ");
             gets_s(theme1->tasks[num].ans[2]);
-            strcat_s(theme1->tasks[num].ans[2], add_line);
+            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[2], add_line); }
             break;
         case 4:
             printf("Ввод: ");
             gets_s(theme1->tasks[num].ans[3]);
-            strcat_s(theme1->tasks[num].ans[3], add_line);
+            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[3], add_line); }
             break;
         case 5: printf("Выход из режима редактирования.\n\n"); break;
         default: printf("Некорректный ввод. Повторите попытку.\n\n"); break;
@@ -562,8 +570,16 @@ void write_into_f(struct taskList* theme1, int th) {
         }
         else {
             for (int i = 0; i < theme1->size; i++) {
-
-                fprintf(f1, "%s", theme1->tasks[i].quest);
+                if (i < theme1->size - 1) {
+                    fprintf(f1, "%s", theme1->tasks[i].quest);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].quest);
+                    if (length > 0 && theme1->tasks[i].quest[length - 1] == '\n') {
+                        theme1->tasks[i].quest[length - 1] = '\0';
+                    }
+                    fprintf(f1, "%s", theme1->tasks[i].quest);
+                }
             }
         }
         fclose(f1);
@@ -573,7 +589,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f01, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans0_2.txt", "w");
         if (f01) {
             for (int i = 0; i < theme1->size; i++) {
-                fprintf(f01, "%s", theme1->tasks[i].ans[0]);
+                if (i < theme1->size - 1) {
+                    fprintf(f01, "%s", theme1->tasks[i].ans[0]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[0]);
+                    if (length > 0 && theme1->tasks[i].ans[0][length - 1] == '\n') {
+                        theme1->tasks[i].ans[0][length - 1] = '\0';
+                    }
+                    fprintf(f01, "%s", theme1->tasks[i].ans[0]);
+                }
             }
         }
         fclose(f01);
@@ -584,9 +609,17 @@ void write_into_f(struct taskList* theme1, int th) {
         if (f11) {
 
             for (int i = 0; i < theme1->size; i++) {
-                fprintf(f11, "%s", theme1->tasks[i].ans[1]);
+                if (i < theme1->size - 1) {
+                    fprintf(f11, "%s", theme1->tasks[i].ans[1]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[1]);
+                    if (length > 0 && theme1->tasks[i].ans[1][length - 1] == '\n') {
+                        theme1->tasks[i].ans[1][length - 1] = '\0';
+                    }
+                    fprintf(f11, "%s", theme1->tasks[i].ans[1]);
+                }
             }
-
         }
         fclose(f11);
 
@@ -596,7 +629,16 @@ void write_into_f(struct taskList* theme1, int th) {
         if (f21) {
 
             for (int i = 0; i < theme1->size; i++) {
-                fprintf(f21, "%s", theme1->tasks[i].ans[2]);
+                if (i < theme1->size - 1) {
+                    fprintf(f21, "%s", theme1->tasks[i].ans[2]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[2]);
+                    if (length > 0 && theme1->tasks[i].ans[2][length - 1] == '\n') {
+                        theme1->tasks[i].ans[2][length - 1] = '\0';
+                    }
+                    fprintf(f21, "%s", theme1->tasks[i].ans[2]);
+                }
             }
         }
         fclose(f21);
@@ -606,7 +648,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f31, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Address.ans3_2.txt", "w");
         if (f31) {
             for (int i = 0; i < theme1->size; i++) {
-                fprintf(f31, "%s", theme1->tasks[i].ans[3]);
+                if (i < theme1->size - 1) {
+                    fprintf(f31, "%s", theme1->tasks[i].ans[3]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[3]);
+                    if (length > 0 && theme1->tasks[i].ans[3][length - 1] == '\n') {
+                        theme1->tasks[i].ans[3][length - 1] = '\0';
+                    }
+                    fprintf(f31, "%s", theme1->tasks[i].ans[3]);
+                }
             }
         }
         fclose(f31);
@@ -621,7 +672,16 @@ void write_into_f(struct taskList* theme1, int th) {
         }
         else {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].quest, 1000, f2);
+                if (i < theme1->size - 1) {
+                    fprintf(f2, "%s", theme1->tasks[i].quest);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].quest);
+                    if (length > 0 && theme1->tasks[i].quest[length - 1] == '\n') {
+                        theme1->tasks[i].quest[length - 1] = '\0';
+                    }
+                    fprintf(f2, "%s", theme1->tasks[i].quest);
+                }
             }
         }
         fclose(f2);
@@ -631,7 +691,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f02, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans0_2.txt", "w");
         if (f02) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[0], 1000, f02);
+                if (i < theme1->size - 1) {
+                    fprintf(f02, "%s", theme1->tasks[i].ans[0]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[0]);
+                    if (length > 0 && theme1->tasks[i].ans[0][length - 1] == '\n') {
+                        theme1->tasks[i].ans[0][length - 1] = '\0';
+                    }
+                    fprintf(f02, "%s", theme1->tasks[i].ans[0]);
+                }
             }
         }
         fclose(f02);
@@ -641,7 +710,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f12, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans1_2.txt", "w");
         if (f12) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[1], 1000, f12);
+                if (i < theme1->size - 1) {
+                    fprintf(f12, "%s", theme1->tasks[i].ans[1]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[1]);
+                    if (length > 0 && theme1->tasks[i].ans[1][length - 1] == '\n') {
+                        theme1->tasks[i].ans[1][length - 1] = '\0';
+                    }
+                    fprintf(f12, "%s", theme1->tasks[i].ans[1]);
+                }
             }
         }
         fclose(f12);
@@ -651,7 +729,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f22, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans2_2.txt", "w");
         if (f22) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[2], 1000, f22);
+                if (i < theme1->size - 1) {
+                    fprintf(f22, "%s", theme1->tasks[i].ans[2]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[2]);
+                    if (length > 0 && theme1->tasks[i].ans[2][length - 1] == '\n') {
+                        theme1->tasks[i].ans[2][length - 1] = '\0';
+                    }
+                    fprintf(f22, "%s", theme1->tasks[i].ans[2]);
+                }
             }
         }
         fclose(f22);
@@ -661,7 +748,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f32, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Array.ans3_2.txt", "w");
         if (f32) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[3], 1000, f32);
+                if (i < theme1->size - 1) {
+                    fprintf(f32, "%s", theme1->tasks[i].ans[3]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[3]);
+                    if (length > 0 && theme1->tasks[i].ans[3][length - 1] == '\n') {
+                        theme1->tasks[i].ans[3][length - 1] = '\0';
+                    }
+                    fprintf(f32, "%s", theme1->tasks[i].ans[3]);
+                }
             }
         }
         fclose(f32);
@@ -676,7 +772,16 @@ void write_into_f(struct taskList* theme1, int th) {
         }
         else {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].quest, 1000, f3);
+                if (i < theme1->size - 1) {
+                    fprintf(f3, "%s", theme1->tasks[i].quest);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].quest);
+                    if (length > 0 && theme1->tasks[i].quest[length - 1] == '\n') {
+                        theme1->tasks[i].quest[length - 1] = '\0';
+                    }
+                    fprintf(f3, "%s", theme1->tasks[i].quest);
+                }
             }
         }
         fclose(f3);
@@ -686,7 +791,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f03, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans0_2.txt", "w");
         if (f03) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[0], 1000, f03);
+                if (i < theme1->size - 1) {
+                    fprintf(f03, "%s", theme1->tasks[i].ans[0]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[0]);
+                    if (length > 0 && theme1->tasks[i].ans[0][length - 1] == '\n') {
+                        theme1->tasks[i].ans[0][length - 1] = '\0';
+                    }
+                    fprintf(f03, "%s", theme1->tasks[i].ans[0]);
+                }
             }
         }
         fclose(f03);
@@ -696,7 +810,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f13, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans1_2.txt", "w");
         if (f13) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[1], 1000, f13);
+                if (i < theme1->size - 1) {
+                    fprintf(f13, "%s", theme1->tasks[i].ans[1]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[1]);
+                    if (length > 0 && theme1->tasks[i].ans[1][length - 1] == '\n') {
+                        theme1->tasks[i].ans[1][length - 1] = '\0';
+                    }
+                    fprintf(f13, "%s", theme1->tasks[i].ans[1]);
+                }
             }
         }
         fclose(f13);
@@ -706,7 +829,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f23, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans2_2.txt", "w");
         if (f23) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[2], 1000, f23);
+                if (i < theme1->size - 1) {
+                    fprintf(f23, "%s", theme1->tasks[i].ans[2]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[2]);
+                    if (length > 0 && theme1->tasks[i].ans[2][length - 1] == '\n') {
+                        theme1->tasks[i].ans[2][length - 1] = '\0';
+                    }
+                    fprintf(f23, "%s", theme1->tasks[i].ans[2]);
+                }
             }
         }
         fclose(f23);
@@ -716,7 +848,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f33, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Dynamic.ans3_2.txt", "w");
         if (f33) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[3], 1000, f33);
+                if (i < theme1->size - 1) {
+                    fprintf(f33, "%s", theme1->tasks[i].ans[3]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[3]);
+                    if (length > 0 && theme1->tasks[i].ans[3][length - 1] == '\n') {
+                        theme1->tasks[i].ans[3][length - 1] = '\0';
+                    }
+                    fprintf(f33, "%s", theme1->tasks[i].ans[3]);
+                }
             }
         }
         fclose(f33);
@@ -731,7 +872,16 @@ void write_into_f(struct taskList* theme1, int th) {
         }
         else {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].quest, 1000, f4);
+                if (i < theme1->size - 1) {
+                    fprintf(f4, "%s", theme1->tasks[i].quest);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].quest);
+                    if (length > 0 && theme1->tasks[i].quest[length - 1] == '\n') {
+                        theme1->tasks[i].quest[length - 1] = '\0';
+                    }
+                    fprintf(f4, "%s", theme1->tasks[i].quest);
+                }
             }
         }
         fclose(f4);
@@ -741,7 +891,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f04, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans0_2.txt", "w");
         if (f04) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[0], 1000, f04);
+                if (i < theme1->size - 1) {
+                    fprintf(f04, "%s", theme1->tasks[i].ans[0]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[0]);
+                    if (length > 0 && theme1->tasks[i].ans[0][length - 1] == '\n') {
+                        theme1->tasks[i].ans[0][length - 1] = '\0';
+                    }
+                    fprintf(f04, "%s", theme1->tasks[i].ans[0]);
+                }
             }
         }
         fclose(f04);
@@ -751,7 +910,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f14, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans1_2.txt", "w");
         if (f14) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[1], 1000, f14);
+                if (i < theme1->size - 1) {
+                    fprintf(f14, "%s", theme1->tasks[i].ans[1]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[1]);
+                    if (length > 0 && theme1->tasks[i].ans[1][length - 1] == '\n') {
+                        theme1->tasks[i].ans[1][length - 1] = '\0';
+                    }
+                    fprintf(f14, "%s", theme1->tasks[i].ans[1]);
+                }
             }
         }
         fclose(f14);
@@ -761,7 +929,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f24, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans2_2.txt", "w");
         if (f24) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[2], 1000, f24);
+                if (i < theme1->size - 1) {
+                    fprintf(f24, "%s", theme1->tasks[i].ans[2]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[2]);
+                    if (length > 0 && theme1->tasks[i].ans[2][length - 1] == '\n') {
+                        theme1->tasks[i].ans[2][length - 1] = '\0';
+                    }
+                    fprintf(f24, "%s", theme1->tasks[i].ans[2]);
+                }
             }
         }
         fclose(f24);
@@ -771,7 +948,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f34, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/File.ans3_2.txt", "w");
         if (f34) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[3], 1000, f34);
+                if (i < theme1->size - 1) {
+                    fprintf(f34, "%s", theme1->tasks[i].ans[3]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[3]);
+                    if (length > 0 && theme1->tasks[i].ans[3][length - 1] == '\n') {
+                        theme1->tasks[i].ans[3][length - 1] = '\0';
+                    }
+                    fprintf(f34, "%s", theme1->tasks[i].ans[3]);
+                }
             }
         }
         fclose(f34);
@@ -786,7 +972,16 @@ void write_into_f(struct taskList* theme1, int th) {
         }
         else {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].quest, 1000, f5);
+                if (i < theme1->size - 1) {
+                    fprintf(f5, "%s", theme1->tasks[i].quest);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].quest);
+                    if (length > 0 && theme1->tasks[i].quest[length - 1] == '\n') {
+                        theme1->tasks[i].quest[length - 1] = '\0';
+                    }
+                    fprintf(f5, "%s", theme1->tasks[i].quest);
+                }
             }
         }
         fclose(f5);
@@ -796,7 +991,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f05, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans0_2.txt", "w");
         if (f05) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[0], 1000, f05);
+                if (i < theme1->size - 1) {
+                    fprintf(f05, "%s", theme1->tasks[i].ans[0]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[0]);
+                    if (length > 0 && theme1->tasks[i].ans[0][length - 1] == '\n') {
+                        theme1->tasks[i].ans[0][length - 1] = '\0';
+                    }
+                    fprintf(f05, "%s", theme1->tasks[i].ans[0]);
+                }
             }
         }
         fclose(f05);
@@ -806,7 +1010,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f15, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans1_2.txt", "w");
         if (f15) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[1], 1000, f15);
+                if (i < theme1->size - 1) {
+                    fprintf(f15, "%s", theme1->tasks[i].ans[1]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[1]);
+                    if (length > 0 && theme1->tasks[i].ans[1][length - 1] == '\n') {
+                        theme1->tasks[i].ans[1][length - 1] = '\0';
+                    }
+                    fprintf(f15, "%s", theme1->tasks[i].ans[1]);
+                }
             }
         }
         fclose(f15);
@@ -816,7 +1029,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f25, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans2_2.txt", "w");
         if (f25) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[2], 1000, f25);
+                if (i < theme1->size - 1) {
+                    fprintf(f25, "%s", theme1->tasks[i].ans[2]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[2]);
+                    if (length > 0 && theme1->tasks[i].ans[2][length - 1] == '\n') {
+                        theme1->tasks[i].ans[2][length - 1] = '\0';
+                    }
+                    fprintf(f25, "%s", theme1->tasks[i].ans[2]);
+                }
             }
         }
         fclose(f25);
@@ -826,7 +1048,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f35, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Loop.ans3_2.txt", "w");
         if (f35) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[3], 1000, f35);
+                if (i < theme1->size - 1) {
+                    fprintf(f35, "%s", theme1->tasks[i].ans[3]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[3]);
+                    if (length > 0 && theme1->tasks[i].ans[3][length - 1] == '\n') {
+                        theme1->tasks[i].ans[3][length - 1] = '\0';
+                    }
+                    fprintf(f35, "%s", theme1->tasks[i].ans[3]);
+                }
             }
         }
         fclose(f35);
@@ -841,7 +1072,16 @@ void write_into_f(struct taskList* theme1, int th) {
         }
         else {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].quest, 1000, f6);
+                if (i < theme1->size - 1) {
+                    fprintf(f6, "%s", theme1->tasks[i].quest);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].quest);
+                    if (length > 0 && theme1->tasks[i].quest[length - 1] == '\n') {
+                        theme1->tasks[i].quest[length - 1] = '\0';
+                    }
+                    fprintf(f6, "%s", theme1->tasks[i].quest);
+                }
             }
         }
         fclose(f6);
@@ -851,7 +1091,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f06, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans0_2.txt", "w");
         if (f06) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[0], 1000, f06);
+                if (i < theme1->size - 1) {
+                    fprintf(f06, "%s", theme1->tasks[i].ans[0]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[0]);
+                    if (length > 0 && theme1->tasks[i].ans[0][length - 1] == '\n') {
+                        theme1->tasks[i].ans[0][length - 1] = '\0';
+                    }
+                    fprintf(f06, "%s", theme1->tasks[i].ans[0]);
+                }
             }
         }
         fclose(f06);
@@ -861,7 +1110,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f16, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans1_2.txt", "w");
         if (f16) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[1], 1000, f16);
+                if (i < theme1->size - 1) {
+                    fprintf(f16, "%s", theme1->tasks[i].ans[1]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[1]);
+                    if (length > 0 && theme1->tasks[i].ans[1][length - 1] == '\n') {
+                        theme1->tasks[i].ans[1][length - 1] = '\0';
+                    }
+                    fprintf(f16, "%s", theme1->tasks[i].ans[1]);
+                }
             }
         }
         fclose(f16);
@@ -871,7 +1129,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f26, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans2_2.txt", "w");
         if (f26) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[2], 1000, f26);
+                if (i < theme1->size - 1) {
+                    fprintf(f26, "%s", theme1->tasks[i].ans[2]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[2]);
+                    if (length > 0 && theme1->tasks[i].ans[2][length - 1] == '\n') {
+                        theme1->tasks[i].ans[2][length - 1] = '\0';
+                    }
+                    fprintf(f26, "%s", theme1->tasks[i].ans[2]);
+                }
             }
         }
         fclose(f26);
@@ -881,9 +1148,19 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f36, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Recursion.ans3_2.txt", "w");
         if (f36) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[3], 1000, f36);
+                if (i < theme1->size - 1) {
+                    fprintf(f36, "%s", theme1->tasks[i].ans[3]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[3]);
+                    if (length > 0 && theme1->tasks[i].ans[3][length - 1] == '\n') {
+                        theme1->tasks[i].ans[3][length - 1] = '\0';
+                    }
+                    fprintf(f36, "%s", theme1->tasks[i].ans[3]);
+                }
             }
         }
+
         fclose(f36);
 
         break;
@@ -896,7 +1173,16 @@ void write_into_f(struct taskList* theme1, int th) {
         }
         else {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].quest, 1000, f7);
+                if (i < theme1->size - 1) {
+                    fprintf(f7, "%s", theme1->tasks[i].quest);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].quest);
+                    if (length > 0 && theme1->tasks[i].quest[length - 1] == '\n') {
+                        theme1->tasks[i].quest[length - 1] = '\0';
+                    }
+                    fprintf(f7, "%s", theme1->tasks[i].quest);
+                }
             }
         }
         fclose(f7);
@@ -906,7 +1192,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f07, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans0_2.txt", "w");
         if (f07) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[0], 1000, f07);
+                if (i < theme1->size - 1) {
+                    fprintf(f07, "%s", theme1->tasks[i].ans[0]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[0]);
+                    if (length > 0 && theme1->tasks[i].ans[0][length - 1] == '\n') {
+                        theme1->tasks[i].ans[0][length - 1] = '\0';
+                    }
+                    fprintf(f07, "%s", theme1->tasks[i].ans[0]);
+                }
             }
         }
         fclose(f07);
@@ -916,7 +1211,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f17, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans1_2.txt", "w");
         if (f17) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[1], 1000, f17);
+                if (i < theme1->size - 1) {
+                    fprintf(f17, "%s", theme1->tasks[i].ans[1]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[1]);
+                    if (length > 0 && theme1->tasks[i].ans[1][length - 1] == '\n') {
+                        theme1->tasks[i].ans[1][length - 1] = '\0';
+                    }
+                    fprintf(f17, "%s", theme1->tasks[i].ans[1]);
+                }
             }
         }
         fclose(f17);
@@ -926,7 +1230,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f27, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans2_2.txt", "w");
         if (f27) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[2], 1000, f27);
+                if (i < theme1->size - 1) {
+                    fprintf(f27, "%s", theme1->tasks[i].ans[2]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[2]);
+                    if (length > 0 && theme1->tasks[i].ans[2][length - 1] == '\n') {
+                        theme1->tasks[i].ans[2][length - 1] = '\0';
+                    }
+                    fprintf(f27, "%s", theme1->tasks[i].ans[2]);
+                }
             }
         }
         fclose(f27);
@@ -936,7 +1249,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f37, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/String.ans3_2.txt", "w");
         if (f37) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[3], 1000, f37);
+                if (i < theme1->size - 1) {
+                    fprintf(f37, "%s", theme1->tasks[i].ans[3]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[3]);
+                    if (length > 0 && theme1->tasks[i].ans[3][length - 1] == '\n') {
+                        theme1->tasks[i].ans[3][length - 1] = '\0';
+                    }
+                    fprintf(f37, "%s", theme1->tasks[i].ans[3]);
+                }
             }
         }
         fclose(f37);
@@ -951,7 +1273,16 @@ void write_into_f(struct taskList* theme1, int th) {
         }
         else {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].quest, 1000, f8);
+                if (i < theme1->size - 1) {
+                    fprintf(f8, "%s", theme1->tasks[i].quest);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].quest);
+                    if (length > 0 && theme1->tasks[i].quest[length - 1] == '\n') {
+                        theme1->tasks[i].quest[length - 1] = '\0';
+                    }
+                    fprintf(f8, "%s", theme1->tasks[i].quest);
+                }
             }
         }
         fclose(f8);
@@ -961,7 +1292,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f08, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans0_2.txt", "w");
         if (f08) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[0], 1000, f08);
+                if (i < theme1->size - 1) {
+                    fprintf(f08, "%s", theme1->tasks[i].ans[0]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[0]);
+                    if (length > 0 && theme1->tasks[i].ans[0][length - 1] == '\n') {
+                        theme1->tasks[i].ans[0][length - 1] = '\0';
+                    }
+                    fprintf(f08, "%s", theme1->tasks[i].ans[0]);
+                }
             }
         }
         fclose(f08);
@@ -971,7 +1311,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f18, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans1_2.txt", "w");
         if (f18) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[1], 1000, f18);
+                if (i < theme1->size - 1) {
+                    fprintf(f18, "%s", theme1->tasks[i].ans[1]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[1]);
+                    if (length > 0 && theme1->tasks[i].ans[1][length - 1] == '\n') {
+                        theme1->tasks[i].ans[1][length - 1] = '\0';
+                    }
+                    fprintf(f18, "%s", theme1->tasks[i].ans[1]);
+                }
             }
         }
         fclose(f18);
@@ -981,7 +1330,16 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f28, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans2_2.txt", "w");
         if (f28) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[2], 1000, f28);
+                if (i < theme1->size - 1) {
+                    fprintf(f28, "%s", theme1->tasks[i].ans[2]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[2]);
+                    if (length > 0 && theme1->tasks[i].ans[2][length - 1] == '\n') {
+                        theme1->tasks[i].ans[2][length - 1] = '\0';
+                    }
+                    fprintf(f28, "%s", theme1->tasks[i].ans[2]);
+                }
             }
         }
         fclose(f28);
@@ -991,11 +1349,19 @@ void write_into_f(struct taskList* theme1, int th) {
         fopen_s(&f38, "C:/Users/ADMIN/source/repos/c0rdyy/Testing-System/Testing-System/Structure.ans3_2.txt", "w");
         if (f38) {
             for (int i = 0; i < theme1->size; i++) {
-                fgets(theme1->tasks[i].ans[3], 1000, f38);
+                if (i < theme1->size - 1) {
+                    fprintf(f38, "%s", theme1->tasks[i].ans[3]);
+                }
+                else {
+                    int length = strlen(theme1->tasks[i].ans[3]);
+                    if (length > 0 && theme1->tasks[i].ans[3][length - 1] == '\n') {
+                        theme1->tasks[i].ans[3][length - 1] = '\0';
+                    }
+                    fprintf(f38, "%s", theme1->tasks[i].ans[3]);
+                }
             }
         }
         fclose(f38);
-
         break;
     }
 }
@@ -1058,9 +1424,6 @@ void edit_que() {
             } while (n < 1 || n > database.size);
 
             del_question(&database, 1, n - 1);
-            for (int i = 0; i < database.size; i++) {
-                printf("%d, %s", i, database.tasks[i].quest);
-            }
             write_into_f(&database, th);
             print_task_list(&database);
             printf("\n");
