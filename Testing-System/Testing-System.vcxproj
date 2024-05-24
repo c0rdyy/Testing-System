@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Student_mode.cpp" />
     <ClCompile Include="EditQ.cpp" />
     <ClCompile Include="Encryption.cpp" />
     <ClCompile Include="main.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="EditQ.h" />
     <ClInclude Include="Encryption.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Student_mode.h" />
     <ClInclude Include="Teacher_mode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
