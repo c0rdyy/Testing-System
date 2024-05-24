@@ -4,6 +4,10 @@
 #include <string.h>
 #include <locale.h>
 #include <Windows.h>
+#include "Teacher_mode.h"
+#include "EditQ.h"
+
+#define MAX_LINE_LENGTH 256
 
 const char* themes[] =
 {
@@ -16,31 +20,6 @@ const char* themes[] =
 "Строки",
 "Структуры"
 };
-
-typedef struct {
-    char firstName[50];
-    char lastName[50];
-    char login[50];
-    char password[50];
-    int scores[9];
-} Student;
-
-#define MAX_LINE_LENGTH 256
-
-int list();
-void deleteStudent(const char* filename, const char* login);
-void addStudent(const char* filename);
-void updateStudentProgress(const char* filename, const char* login);
-int readStudentData(const char* filename, Student* students);
-void printAllThemes(Student* students, int count, int filter);
-void printCurTheme(Student* students, int count, int theme, int filter);
-void printFinalTest(Student* students, int count, int filter);
-void sortStudentsByTheme(Student* students, int count, int theme, int ascending);
-void sortStudentsByFinalTest(Student* students, int count, int ascending);
-void sortStudentsByAverageScore(Student* students, int count, int ascending);
-void swap(Student* a, Student* b);
-int getComparableScore(int score);
-void listCur(Student* students, int num);
 
 int teacherMode() {
     SetConsoleCP(1251);
@@ -83,31 +62,12 @@ int teacherMode() {
             break;
         }
 
+
         switch (choice) {
         case 1: {
-            int ch1;
-            do {
-                printf("|------Редактирование-вопросов------|\n");
-                printf("|Выберете действие:                 |\n");
-                printf("|                                   |\n");
-                printf("|1.Удаление                         |\n");
-                printf("|2.Добавление                       |\n");
-                printf("|3.Изменение                        |\n");
-                printf("|                                   |\n");
-                printf("|Для выхода нажмите '0'             |\n");
-                printf("|-----------------------------------|\n");
-
-                scanf_s("%d", &ch1);
-                if (ch1 == 0) break;
-
-                switch (ch1) {
-                case 1: break;
-                case 2: break;
-                case 3: break;
-                default: printf("Некорректный ввод. Повторите попытку.\n"); break;
-                }
-            } while (1);
+            edit_que();
         } break;
+
         case 2: {
             int ch2;
             do {
