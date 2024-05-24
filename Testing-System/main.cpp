@@ -1,6 +1,7 @@
 ﻿#include "MainMenu.h"
 #include "Encryption.h"
 #include "Teacher_mode.h"
+//#include "CHAR.h"
 
 int main() 
 {
@@ -8,7 +9,6 @@ int main()
     setlocale(LC_ALL, "Rus");
 
     int shift = 3;
-
 
     char input_Array_ans0[] = "Array.ans0.txt";
     char output_Array_ans0[] = "Array.ans0_1.txt";
