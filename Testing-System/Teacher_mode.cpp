@@ -285,7 +285,7 @@ int readStudentData(const char* filename, Student* students) {
 }
 
 int list() {
-    const char* filename = "Students.txt";
+    const char* filename = "Students_2.txt";
     Student students[100];
     int num = readStudentData(filename, students);
     for (int i = 0; i < num; i++) {

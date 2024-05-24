@@ -1,7 +1,6 @@
 ﻿#include "MainMenu.h"
 #include "Encryption.h"
 #include "Teacher_mode.h"
-//#include "CHAR.h"
 
 int main() 
 {
