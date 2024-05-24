@@ -2,6 +2,10 @@
 #include <Windows.h>
 #include <stdio.h>
 #include "EditQ.h"
+int isEmptyLine(const char* str) {
+    if (str[0] == '\0') { return 1;  }
+    return 0;
+}
 void readf(struct taskList* theme1, int th) {
     theme1->size = 0;
     switch (th)
@@ -462,22 +466,76 @@ void readf(struct taskList* theme1, int th) {
 
 void add_question(struct taskList* theme1) {
     struct task* newTask = &theme1->tasks[theme1->size];
+    char line[500];
+    int flag = 1;
+    getchar();
+    do {
+        printf("Введите вопрос: ");
+        gets_s(line);
+        flag = isEmptyLine(line);
+        if (flag == 1) {
+            printf("Некорректный ввод. Повторите попытку.\n");
+        }
+        else {
+            strcpy_s(theme1->tasks[theme1->size].quest, line);
+            strcat_s(theme1->tasks[theme1->size - 1].quest, "\n");
+        }
+    } while (flag == 1);
 
-    printf("Введите вопрос: "); getchar();
-    gets_s(theme1->tasks[theme1->size].quest);
-    strcat_s(theme1->tasks[theme1->size - 1].quest, "\n");
-    printf("Введите правильный ответ: ");
-    gets_s(theme1->tasks[theme1->size].ans[0]);
-    strcat_s(theme1->tasks[theme1->size - 1].ans[0], "\n");
-    printf("Введите 1-ый дополнительный ответ: ");
-    gets_s(theme1->tasks[theme1->size].ans[1]);
-    strcat_s(theme1->tasks[theme1->size - 1].ans[1], "\n");
-    printf("Введите 2-ой дополнительный ответ: ");
-    gets_s(theme1->tasks[theme1->size].ans[2]);
-    strcat_s(theme1->tasks[theme1->size - 1].ans[2], "\n");
-    printf("Введите 3-ий дополнительный ответ: ");
-    gets_s(theme1->tasks[theme1->size].ans[3]);
-    strcat_s(theme1->tasks[theme1->size - 1].ans[3], "\n");
+
+    do {
+        printf("Введите правильный ответ: ");
+        gets_s(line);
+        flag = isEmptyLine(line);
+        if (flag == 1) {
+            printf("Некорректный ввод. Повторите попытку.\n");
+        }
+        else {
+            strcpy_s(theme1->tasks[theme1->size].ans[0], line);
+            strcat_s(theme1->tasks[theme1->size - 1].ans[0], "\n");
+        }
+    } while (flag == 1);
+
+    do {
+        printf("Введите 1-ый дополнительный ответ: ");
+        gets_s(line);
+        flag = isEmptyLine(line);
+        if (flag == 1) {
+            printf("Некорректный ввод. Повторите попытку.\n");
+        }
+        else {
+            strcpy_s(theme1->tasks[theme1->size].ans[1], line);
+            strcat_s(theme1->tasks[theme1->size - 1].ans[1], "\n");
+        }
+    } while (flag == 1);
+
+
+    do {
+        printf("Введите 2-ой дополнительный ответ: ");
+        gets_s(line);
+        flag = isEmptyLine(line);
+        if (flag == 1) {
+
+            printf("Некорректный ввод. Повторите попытку.\n");
+        }
+        else {
+            strcpy_s(theme1->tasks[theme1->size].ans[2], line);
+            strcat_s(theme1->tasks[theme1->size - 1].ans[2], "\n");
+        }
+    } while (flag == 1);
+
+    do {
+        printf("Введите 3-ой дополнительный ответ: ");
+        gets_s(line);
+        flag = isEmptyLine(line);
+        if (flag == 1) {
+            printf("Некорректный ввод. Повторите попытку.\n");
+        }
+        else {
+            strcpy_s(theme1->tasks[theme1->size].ans[3], line);
+            strcat_s(theme1->tasks[theme1->size - 1].ans[3], "\n");
+        }
+    } while (flag == 1);
     theme1->size++;
 }
 
@@ -512,30 +570,105 @@ void edit_question(struct taskList* theme1, int num) {
         getchar();
         switch (edit) {
         case 0:
-            printf("Ввод: ");
-            gets_s(theme1->tasks[num].quest);
-            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].quest, add_line); }
+        {
+            int flag = 0;
+            char line[500];
+            do {
+                printf("Ввод: ");
+                gets_s(line);
+                flag = isEmptyLine(line);
+                if (flag == 1) {
+                    printf("Некорректный ввод. Повторите попытку.\n");
+                }
+                else {
+                    strcpy_s(theme1->tasks[num].quest, line);
+                    if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].quest, add_line); }
+                }
+
+            } while (flag == 1);
+
             break;
+        }
         case 1:
-            printf("Ввод: ");
-            gets_s(theme1->tasks[num].ans[0]);
-            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[0], add_line); }
+        {
+            int flag = 0;
+            char line[500];
+            do {
+                printf("Ввод: ");
+                gets_s(line);
+                flag = isEmptyLine(line);
+                if (flag == 1) {
+                    printf("Некорректный ввод. Повторите попытку.\n");
+                }
+                else {
+                    strcpy_s(theme1->tasks[num].ans[0], line);
+                    if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[0], add_line); }
+                }
+
+            } while (flag == 1);
+
             break;
+        }
         case 2:
-            printf("Ввод: ");
-            gets_s(theme1->tasks[num].ans[1]);
-            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[1], add_line); }
+        {
+            int flag = 0;
+            char line[500];
+            do {
+                printf("Ввод: ");
+                gets_s(line);
+                flag = isEmptyLine(line);
+                if (flag == 1) {
+                    printf("Некорректный ввод. Повторите попытку.\n");
+                }
+                else {
+                    strcpy_s(theme1->tasks[num].ans[1], line);
+                    if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[1], add_line); }
+                }
+
+            } while (flag == 1);
+
             break;
+        }
         case 3:
-            printf("Ввод: ");
-            gets_s(theme1->tasks[num].ans[2]);
-            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[2], add_line); }
+        {
+            int flag = 0;
+            char line[500];
+            do {
+                printf("Ввод: ");
+                gets_s(line);
+                flag = isEmptyLine(line);
+                if (flag == 1) {
+                    printf("Некорректный ввод. Повторите попытку.\n");
+                }
+                else {
+                    strcpy_s(theme1->tasks[num].ans[2], line);
+                    if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[2], add_line); }
+                }
+
+            } while (flag == 1);
+
             break;
+        }
         case 4:
-            printf("Ввод: ");
-            gets_s(theme1->tasks[num].ans[3]);
-            if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[3], add_line); }
+        {
+            int flag = 0;
+            char line[500];
+            do {
+                printf("Ввод: ");
+                gets_s(line);
+                flag = isEmptyLine(line);
+                if (flag == 1) {
+                    printf("Некорректный ввод. Повторите попытку.\n");
+                }
+                else {
+                    strcpy_s(theme1->tasks[num].ans[3], line);
+                    if (num != theme1->size - 1) { strcat_s(theme1->tasks[num].ans[3], add_line); }
+                }
+
+            } while (flag == 1);
+
             break;
+        }
         case 5: printf("Выход из режима редактирования.\n\n"); break;
         default: printf("Некорректный ввод. Повторите попытку.\n\n"); break;
         }

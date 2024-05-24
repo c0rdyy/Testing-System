@@ -7,6 +7,7 @@ struct taskList {
     struct task tasks[100];
     int size;
 };
+int isEmptyLine(const char* str);
 void readf(struct taskList* theme, int th);
 void add_question(struct taskList* theme);
 void del_question(struct taskList* theme, int th, int num);
