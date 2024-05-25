@@ -152,7 +152,7 @@ int teacherMode() {
 
                         switch (choice3) {
                         case 1:
-                            printf("Введите желаемую оценку для фильтрации. Если не желаете фильтровать, введите 0\n");
+                            printf("Введите желаемую оценку для фильтрации. 9 - студент не проходил тестирование. Если не желаете фильтровать, введите 0\n");
                             scanf("%d", &filter);
                             if (filter < 0 || filter > 10) {
                                 printf("Такой оценки не существует");
@@ -170,7 +170,7 @@ int teacherMode() {
                                 printf("Отсутствует такой вариант\n");
                                 break;
                             }
-                            printf("Введите желаемую оценку для фильтрации. Если не желаете фильтровать, введите 0\n");
+                            printf("Введите желаемую оценку для фильтрации. 9 - студент не проходил тестирование. Если не желаете фильтровать, введите 0\n");
                             scanf("%d", &filter);
                             if (filter < 0 || filter > 10) {
                                 printf("Такой оценки не существует");
@@ -211,9 +211,9 @@ int teacherMode() {
                         }
                         int ascending;
                         if (order == 1)
-                            ascending = 0;
-                        else
                             ascending = 1;
+                        else
+                            ascending = 0;
                         switch (choice4) {
                         case 1:
                             printf("По какой теме вы хотите сортировать?\n");
@@ -526,7 +526,10 @@ void printAllThemes(Student* students, int count, int filter) {
         printf("Фамилия: %s\n", student.lastName);
         for (int i = 0; i < 8; i++) {
             if (student.scores[i] == filter || filter == 0)
-                printf("Оценка по теме %s: %d\n", themes[i], student.scores[i]);
+                if (student.scores[i] != 9)
+                    printf("Оценка по теме %s: %d\n", themes[i], student.scores[i]);
+                else
+                    printf("Студент не сдавал тест по теме %s.\n", themes[i]);
         }
         printf("----------------------------\n");
     }
@@ -547,7 +550,10 @@ void printCurTheme(Student* students, int count, int theme, int filter) {
         is_showed_flag = 1;
         printf("Имя: %s\n", student.firstName);
         printf("Фамилия: %s\n", student.lastName);
-        printf("Оценка по теме %s: %d\n", themes[theme], student.scores[theme]);
+        if (student.scores[i] != 9)
+            printf("Оценка по теме %s: %d\n", themes[i], student.scores[i]);
+        else
+            printf("Студент не сдавал тест по теме %s.\n", themes[i]);
         printf("----------------------------\n");
     }
     if (!is_showed_flag)
