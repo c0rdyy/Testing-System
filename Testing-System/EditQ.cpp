@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "EditQ.h"
 int isEmptyLine(const char* str) {
-    if (str[0] == '\0') { return 1;  }
+    if (str[0] == '\0') { return 1; }
     return 0;
 }
 void readf(struct taskList* theme1, int th) {
@@ -468,24 +468,34 @@ void add_question(struct taskList* theme1) {
     struct task* newTask = &theme1->tasks[theme1->size];
     char line[500];
     int flag = 1;
+    int isDuplicate = 0;
     getchar();
     do {
         printf("Введите вопрос: ");
-        gets_s(line);
+        fgets(line, sizeof(line), stdin);
         flag = isEmptyLine(line);
         if (flag == 1) {
             printf("Некорректный ввод. Повторите попытку.\n");
         }
         else {
-            strcpy_s(theme1->tasks[theme1->size].quest, line);
-            strcat_s(theme1->tasks[theme1->size - 1].quest, "\n");
+            isDuplicate = 0;
+            line[strlen(line)] = '\0'; //последний символ сноса строки заменяется на конец строки
+            for (int i = 0; i < theme1->size; i++) {
+                if (i == theme1->size - 1) { line[strlen(line) - 1] = '\0'; } // для проверки последнего вопроса нужна эта строчка
+                if (strcmp(theme1->tasks[i].quest, line) == 0) {
+                    isDuplicate = 1;
+                    printf("Такой вопрос уже существует, повторите поптыку!\n");
+                    //break;
+                }
+            }
         }
-    } while (flag == 1);
-
+    } while (flag == 1 || isDuplicate == 1);
+    strcpy_s(theme1->tasks[theme1->size].quest, line);
+    strcat_s(theme1->tasks[theme1->size - 1].quest, "\n");
 
     do {
         printf("Введите правильный ответ: ");
-        gets_s(line);
+        fgets(line, sizeof(line), stdin);
         flag = isEmptyLine(line);
         if (flag == 1) {
             printf("Некорректный ввод. Повторите попытку.\n");
@@ -498,44 +508,72 @@ void add_question(struct taskList* theme1) {
 
     do {
         printf("Введите 1-ый дополнительный ответ: ");
-        gets_s(line);
+        fgets(line, sizeof(line), stdin);
         flag = isEmptyLine(line);
         if (flag == 1) {
             printf("Некорректный ввод. Повторите попытку.\n");
         }
         else {
-            strcpy_s(theme1->tasks[theme1->size].ans[1], line);
-            strcat_s(theme1->tasks[theme1->size - 1].ans[1], "\n");
+            isDuplicate = 0;
+            line[strlen(line)] = '\0';
+            for (int i = 0; i < 1; i++) {
+                if (strcmp(theme1->tasks[theme1->size].ans[i], line) == 0) {
+                    isDuplicate = 1;
+                    printf("Такой ответ уже существует, повторите поптыку!\n");
+                }
+            }
+
         }
-    } while (flag == 1);
+    } while (flag == 1 || isDuplicate == 1);
+    strcpy_s(theme1->tasks[theme1->size].ans[1], line);
+    strcat_s(theme1->tasks[theme1->size - 1].ans[1], "\n");
+
 
 
     do {
         printf("Введите 2-ой дополнительный ответ: ");
-        gets_s(line);
+        fgets(line, sizeof(line), stdin);
         flag = isEmptyLine(line);
         if (flag == 1) {
 
             printf("Некорректный ввод. Повторите попытку.\n");
         }
         else {
-            strcpy_s(theme1->tasks[theme1->size].ans[2], line);
-            strcat_s(theme1->tasks[theme1->size - 1].ans[2], "\n");
+            isDuplicate = 0;
+            line[strlen(line)] = '\0';
+            for (int i = 0; i < 2; i++) {
+                if (strcmp(theme1->tasks[theme1->size].ans[i], line) == 0) {
+                    isDuplicate = 1;
+                    printf("Такой ответ уже существует, повторите поптыку!\n");
+                }
+            }
+
         }
-    } while (flag == 1);
+    } while (flag == 1 || isDuplicate == 1);
+    strcpy_s(theme1->tasks[theme1->size].ans[2], line);
+    strcat_s(theme1->tasks[theme1->size - 1].ans[2], "\n");
+
 
     do {
         printf("Введите 3-ой дополнительный ответ: ");
-        gets_s(line);
+        fgets(line, sizeof(line), stdin);
         flag = isEmptyLine(line);
         if (flag == 1) {
             printf("Некорректный ввод. Повторите попытку.\n");
         }
         else {
-            strcpy_s(theme1->tasks[theme1->size].ans[3], line);
-            strcat_s(theme1->tasks[theme1->size - 1].ans[3], "\n");
+            isDuplicate = 0;
+            line[strlen(line)] = '\0';
+            for (int i = 0; i < 3; i++) {
+                if (strcmp(theme1->tasks[theme1->size].ans[i], line) == 0) {
+                    isDuplicate = 1;
+                    printf("Такой ответ уже существует, повторите поптыку!\n");
+                }
+            }
         }
-    } while (flag == 1);
+    } while (flag == 1 || isDuplicate == 1);
+    strcpy_s(theme1->tasks[theme1->size].ans[3], line);
+    strcat_s(theme1->tasks[theme1->size - 1].ans[3], "\n");
     theme1->size++;
 }
 
