@@ -179,10 +179,10 @@ int teacherMode() {
                             printCurTheme(students, num, t - 1, filter);
                             break;
                         case 3:
-                            printf("Введите желаемую оценку для фильтрации. 0 - студент не сдавал тест. Если не желаете фильтровать, введите -1\n");
+                            printf("Введите желаемую оценку для фильтрации. 9 - студент не сдавал тест. Если не желаете фильтровать, введите -1\n");
                             scanf("%d", &filter);
-                            if (filter < -1 || filter > 5) {
-                                printf("Такой оценки не существует");
+                            if (filter < -1 || (filter > 5 && filter != 9)) {
+                                printf("Такой оценки не существует\n");
                                 break;
                             }
                             printFinalTest(students, num, filter);
@@ -638,9 +638,12 @@ void listCur(Student* students, int num) {
         printf("Логин: %s\n", student.login);
         printf("Пароль: %s\n", student.password);
         for (int i = 0; i < 8; i++) {
-            printf("Оценка по теме %s: %d\n", themes[i], student.scores[i]);
+            if (student.scores[i] != 9)
+                printf("Оценка по теме %s: %d\n", themes[i], student.scores[i]);
+            else
+                printf("Студент не сдавал тест по теме %s.\n", themes[i]);
         }
-        if (*student.scores != 9)
+        if (student.scores[8] != 9)
             printf("Итоговая оценка: %d\n", student.scores[8]);
         else
             printf("Студент не сдавал итоговый тест\n");
