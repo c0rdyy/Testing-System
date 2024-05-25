@@ -29,7 +29,7 @@ int teacherMode() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Rus");
-    
+
 
     const char* filename = "Students_2.txt";
 
@@ -73,7 +73,7 @@ int teacherMode() {
             edit_que();
         } break;
 
-        case 2: {        
+        case 2: {
             int ch2;
             do {
                 printf("|----Работа-со-списком-студентов----|\n");
@@ -93,7 +93,7 @@ int teacherMode() {
                 switch (ch2) {
                 case 1: {
                     int ch3;
-                    do {    
+                    do {
                         printf("|-----------------------------------|\n");
                         printf("|Выберите действие:                 |\n");
                         printf("|                                   |\n");
@@ -318,8 +318,8 @@ int list() {
 
 void addStudent(const char* filename) {
 
-    FILE* file; 
-    fopen_s(&file,filename, "a");
+    FILE* file;
+    fopen_s(&file, filename, "a");
     if (!file) {
         perror("Не удалось открыть файл");
         return;
@@ -346,7 +346,7 @@ void addStudent(const char* filename) {
     }
     fprintf(file, "\n");
 
-    printf("Новый студент зарегистрирован ");
+    printf("Новый студент зарегистрирован\n");
     fclose(file);
 
     ENCRYPTION1_2(input_2_Students, output_Students, shift);
@@ -356,7 +356,6 @@ void addStudent(const char* filename) {
 }
 
 int deleteStudent(const char* filename, const char* login) {
-
     FILE* file = fopen(filename, "r");
     if (!file) {
         perror("Не удалось открыть файл");
@@ -365,74 +364,7 @@ int deleteStudent(const char* filename, const char* login) {
 
     Student students[100];
     int count = 0;
-    char line[MAX_LINE_LENGTH];
-
-    while (fgets(line, sizeof(line), file)) {
-        Student student;
-        char* token = strtok(line, "|");
-        if (token) {
-            strcpy(student.firstName, token);
-            token = strtok(NULL, "|");
-        }
-        if (token) {
-            strcpy(student.lastName, token);
-            token = strtok(NULL, "|");
-        }
-        if (token) {
-            strcpy(student.login, token);
-            token = strtok(NULL, "|");
-        }
-        if (token) {
-            strcpy(student.password, token);
-            token = strtok(NULL, "|");
-        }
-        for (int i = 0; i < 9; i++) {
-            if (token) {
-                token = strtok(NULL, "|");
-                student.scores[i] = token ? atoi(token) : 0;
-            }
-        }
-
-        if (strcmp(student.login, login) != 0) {
-            students[count++] = student;       
-        }
-    }
-    fclose(file);
-
-    file = fopen(filename, "w");
-    if (!file) {
-        perror("Не удалось открыть файл");
-        return 0;
-    }
-
-    for (int i = 0; i < count; i++) {
-        Student student = students[i];
-        fprintf(file, "%s|%s|%s|%s", student.firstName, student.lastName, student.login, student.password);
-        for (int j = 0; j < 9; j++) {
-            fprintf(file, "|%d", student.scores[j]);
-        }
-        fprintf(file, "\n");
-    }
-    fclose(file);
-
-    ENCRYPTION1_2(input_2_Students, output_Students, shift);
-    DECRYPTION1_2(input_Students, output_Students, shift);
-    //ENCRYPTION1(input_2_Array_ans0, output_Array_ans0, input_2_Array_ans1, output_Array_ans1, input_2_Array_ans2, output_Array_ans2, input_2_Array_ans3, output_Array_ans3, input_2_Array_quest, output_Array_quest, input_2_Dynamic_ans0, output_Dynamic_ans0, input_2_Dynamic_ans1, output_Dynamic_ans1, input_2_Dynamic_ans2, output_Dynamic_ans2, input_2_Dynamic_ans3, output_Dynamic_ans3, input_2_Dynamic_quest, output_Dynamic_quest, input_2_File_ans0, output_File_ans0, input_2_File_ans1, output_File_ans1, input_2_File_ans2, output_File_ans2, input_2_File_ans3, output_File_ans3, input_2_File_quest, output_File_quest, input_2_Loop_ans0, output_Loop_ans0, input_2_Loop_ans1, output_Loop_ans1, input_2_Loop_ans2, output_Loop_ans2, input_2_Loop_ans3, output_Loop_ans3, input_2_Loop_quest, output_Loop_quest, input_2_Recursion_ans0, output_Recursion_ans0, input_2_Recursion_ans1, output_Recursion_ans1, input_2_Recursion_ans2, output_Recursion_ans2, input_2_Recursion_ans3, output_Recursion_ans3, input_2_Recursion_quest, output_Recursion_quest, input_2_String_ans0, output_String_ans0, input_2_String_ans1, output_String_ans1, input_2_String_ans2, output_String_ans2, input_2_String_ans3, output_String_ans3, input_2_String_quest, output_String_quest, input_2_Structure_ans0, output_Structure_ans0, input_2_Structure_ans1, output_Structure_ans1, input_2_Structure_ans2, output_Structure_ans2, input_2_Structure_ans3, output_Structure_ans3, input_2_Structure_quest, output_Structure_quest, input_2_Address_ans0, output_Address_ans0, input_2_Address_ans1, output_Address_ans1, input_2_Address_ans2, output_Address_ans2, input_2_Address_ans3, output_Address_ans3, input_2_Address_quest, output_Address_quest, input_2_Students, output_Students, shift);
-    //DECRYPTION1(input_Array_ans0, output_Array_ans0, input_Array_ans1, output_Array_ans1, input_Array_ans2, output_Array_ans2, input_Array_ans3, output_Array_ans3, input_Array_quest, output_Array_quest, input_Dynamic_ans0, output_Dynamic_ans0, input_Dynamic_ans1, output_Dynamic_ans1, input_Dynamic_ans2, output_Dynamic_ans2, input_Dynamic_ans3, output_Dynamic_ans3, input_Dynamic_quest, output_Dynamic_quest, input_File_ans0, output_File_ans0, input_File_ans1, output_File_ans1, input_File_ans2, output_File_ans2, input_File_ans3, output_File_ans3, input_File_quest, output_File_quest, input_Loop_ans0, output_Loop_ans0, input_Loop_ans1, output_Loop_ans1, input_Loop_ans2, output_Loop_ans2, input_Loop_ans3, output_Loop_ans3, input_Loop_quest, output_Loop_quest, input_Recursion_ans0, output_Recursion_ans0, input_Recursion_ans1, output_Recursion_ans1, input_Recursion_ans2, output_Recursion_ans2, input_Recursion_ans3, output_Recursion_ans3, input_Recursion_quest, output_Recursion_quest, input_String_ans0, output_String_ans0, input_String_ans1, output_String_ans1, input_String_ans2, output_String_ans2, input_String_ans3, output_String_ans3, input_String_quest, output_String_quest, input_Structure_ans0, output_Structure_ans0, input_Structure_ans1, output_Structure_ans1, input_Structure_ans2, output_Structure_ans2, input_Structure_ans3, output_Structure_ans3, input_Structure_quest, output_Structure_quest, input_Address_ans0, output_Address_ans0, input_Address_ans1, output_Address_ans1, input_Address_ans2, output_Address_ans2, input_Address_ans3, output_Address_ans3, input_Address_quest, output_Address_quest, input_Students, output_Students, shift);
-
-    return 0;
-}
-
-int updateStudentProgress(const char* filename, const char* login) {
-
-    FILE* file = fopen(filename, "r");
-    if (!file) {
-        perror("Не удалось открыть файл");
-        return 0;
-    }
-
-    Student students[100];
-    int count = 0;
+    int found = 0;
     char line[MAX_LINE_LENGTH];
 
     while (fgets(line, sizeof(line), file)) {
@@ -467,6 +399,83 @@ int updateStudentProgress(const char* filename, const char* login) {
         }
 
         if (strcmp(student.login, login) == 0) {
+            found = 1;
+        }
+        else {
+            students[count++] = student;
+        }
+    }
+    fclose(file);
+
+    if (!found) {
+        return 0;
+    }
+
+    file = fopen(filename, "w");
+    if (!file) {
+        perror("Не удалось открыть файл");
+        return 0;
+    }
+
+    for (int i = 0; i < count; i++) {
+        Student student = students[i];
+        fprintf(file, "%s|%s|%s|%s", student.firstName, student.lastName, student.login, student.password);
+        for (int j = 0; j < 9; j++) {
+            fprintf(file, "|%d", student.scores[j]);
+        }
+        fprintf(file, "\n");
+    }
+    fclose(file);
+
+    return 1;
+}
+
+int updateStudentProgress(const char* filename, const char* login) {
+
+    FILE* file = fopen(filename, "r");
+    if (!file) {
+        perror("Не удалось открыть файл");
+        return 0;
+    }
+
+    Student students[100];
+    int count = 0;
+    int found = 0;
+    char line[MAX_LINE_LENGTH];
+
+    while (fgets(line, sizeof(line), file)) {
+        size_t len = strlen(line);
+        if (len > 0 && line[len - 1] == '\n') {
+            line[len - 1] = '\0';
+        }
+
+        Student student;
+        char* token = strtok(line, "|");
+        if (token) {
+            strcpy(student.firstName, token);
+            token = strtok(NULL, "|");
+        }
+        if (token) {
+            strcpy(student.lastName, token);
+            token = strtok(NULL, "|");
+        }
+        if (token) {
+            strcpy(student.login, token);
+            token = strtok(NULL, "|");
+        }
+        if (token) {
+            strcpy(student.password, token);
+            token = strtok(NULL, "|");
+        }
+        for (int j = 0; j < 9; j++) {
+            if (token) {
+                token = strtok(NULL, "|");
+                student.scores[j] = token ? atoi(token) : 0;
+            }
+        }
+
+        if (strcmp(student.login, login) == 0) {
+            found = 1;
             printf("Введите новые оценки студента по 9 темам: ");
             for (int j = 0; j < 9; j++) {
                 do {
@@ -481,6 +490,10 @@ int updateStudentProgress(const char* filename, const char* login) {
         students[count++] = student;
     }
     fclose(file);
+
+    if (!found) {
+        return 0;
+    }
 
     file = fopen(filename, "w");
     if (!file) {
@@ -500,7 +513,7 @@ int updateStudentProgress(const char* filename, const char* login) {
 
     ENCRYPTION1_2(input_2_Students, output_Students, shift);
     DECRYPTION1_2(input_Students, output_Students, shift);
-    return 0;
+    return 1;
     //ENCRYPTION1(input_2_Array_ans0, output_Array_ans0, input_2_Array_ans1, output_Array_ans1, input_2_Array_ans2, output_Array_ans2, input_2_Array_ans3, output_Array_ans3, input_2_Array_quest, output_Array_quest, input_2_Dynamic_ans0, output_Dynamic_ans0, input_2_Dynamic_ans1, output_Dynamic_ans1, input_2_Dynamic_ans2, output_Dynamic_ans2, input_2_Dynamic_ans3, output_Dynamic_ans3, input_2_Dynamic_quest, output_Dynamic_quest, input_2_File_ans0, output_File_ans0, input_2_File_ans1, output_File_ans1, input_2_File_ans2, output_File_ans2, input_2_File_ans3, output_File_ans3, input_2_File_quest, output_File_quest, input_2_Loop_ans0, output_Loop_ans0, input_2_Loop_ans1, output_Loop_ans1, input_2_Loop_ans2, output_Loop_ans2, input_2_Loop_ans3, output_Loop_ans3, input_2_Loop_quest, output_Loop_quest, input_2_Recursion_ans0, output_Recursion_ans0, input_2_Recursion_ans1, output_Recursion_ans1, input_2_Recursion_ans2, output_Recursion_ans2, input_2_Recursion_ans3, output_Recursion_ans3, input_2_Recursion_quest, output_Recursion_quest, input_2_String_ans0, output_String_ans0, input_2_String_ans1, output_String_ans1, input_2_String_ans2, output_String_ans2, input_2_String_ans3, output_String_ans3, input_2_String_quest, output_String_quest, input_2_Structure_ans0, output_Structure_ans0, input_2_Structure_ans1, output_Structure_ans1, input_2_Structure_ans2, output_Structure_ans2, input_2_Structure_ans3, output_Structure_ans3, input_2_Structure_quest, output_Structure_quest, input_2_Address_ans0, output_Address_ans0, input_2_Address_ans1, output_Address_ans1, input_2_Address_ans2, output_Address_ans2, input_2_Address_ans3, output_Address_ans3, input_2_Address_quest, output_Address_quest, input_2_Students, output_Students, shift);
     //DECRYPTION1(input_Array_ans0, output_Array_ans0, input_Array_ans1, output_Array_ans1, input_Array_ans2, output_Array_ans2, input_Array_ans3, output_Array_ans3, input_Array_quest, output_Array_quest, input_Dynamic_ans0, output_Dynamic_ans0, input_Dynamic_ans1, output_Dynamic_ans1, input_Dynamic_ans2, output_Dynamic_ans2, input_Dynamic_ans3, output_Dynamic_ans3, input_Dynamic_quest, output_Dynamic_quest, input_File_ans0, output_File_ans0, input_File_ans1, output_File_ans1, input_File_ans2, output_File_ans2, input_File_ans3, output_File_ans3, input_File_quest, output_File_quest, input_Loop_ans0, output_Loop_ans0, input_Loop_ans1, output_Loop_ans1, input_Loop_ans2, output_Loop_ans2, input_Loop_ans3, output_Loop_ans3, input_Loop_quest, output_Loop_quest, input_Recursion_ans0, output_Recursion_ans0, input_Recursion_ans1, output_Recursion_ans1, input_Recursion_ans2, output_Recursion_ans2, input_Recursion_ans3, output_Recursion_ans3, input_Recursion_quest, output_Recursion_quest, input_String_ans0, output_String_ans0, input_String_ans1, output_String_ans1, input_String_ans2, output_String_ans2, input_String_ans3, output_String_ans3, input_String_quest, output_String_quest, input_Structure_ans0, output_Structure_ans0, input_Structure_ans1, output_Structure_ans1, input_Structure_ans2, output_Structure_ans2, input_Structure_ans3, output_Structure_ans3, input_Structure_quest, output_Structure_quest, input_Address_ans0, output_Address_ans0, input_Address_ans1, output_Address_ans1, input_Address_ans2, output_Address_ans2, input_Address_ans3, output_Address_ans3, input_Address_quest, output_Address_quest, input_Students, output_Students, shift);
 }
