@@ -28,6 +28,8 @@
 
 Список логинов, паролей и ответов на вопросы можно найти [здесь](https://docs.google.com/spreadsheets/d/1-EmdmhW9IHYWsFyYi2jWYf1iN5Ha_wqMid9cWWoqD4Y/edit#gid=0).
 
+Ссылку на тестирование проекта можно найти [здесь]([https://docs.google.com/spreadsheets/d/1-EmdmhW9IHYWsFyYi2jWYf1iN5Ha_wqMid9cWWoqD4Y/edit#gid=0](https://docs.google.com/spreadsheets/d/1TLRZn6UbJqcKoNb9Lhna2qlFUmiYK9eVY-wX5Mwmxl4/edit?usp=sharing).
+
 <details>
   <summary>Тык</summary>
 
