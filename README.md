@@ -15,7 +15,8 @@
 - Проведение тестов по темам с оценкой результатов.
 - Проведение итогового теста с оценкой и сохранением прогресса.
 
-#### При компиляции режима студента была обнаружена ошибка, при переходе на другой компилятор её не удалось исправить. То, как выглядел режим студента на xcode, можно посмотреть в файле, прикреплённом отдельно от проекта, Students_mode_1
+## Важное примечание
+При компиляции режима студента была обнаружена ошибка, при переходе на другой компилятор её не удалось исправить. То, как выглядел режим студента на xcode, можно посмотреть в файле, прикреплённом отдельно от проекта, Students_mode_1
 
 ## Проект выполняли
 | Модуль | Исполнитель |
@@ -30,7 +31,7 @@
 
 Список логинов, паролей и ответов на вопросы можно найти [здесь](https://docs.google.com/spreadsheets/d/1-EmdmhW9IHYWsFyYi2jWYf1iN5Ha_wqMid9cWWoqD4Y/edit#gid=0).
 
-Ссылку на тестирование проекта можно найти [здесь]([https://docs.google.com/spreadsheets/d/1-EmdmhW9IHYWsFyYi2jWYf1iN5Ha_wqMid9cWWoqD4Y/edit#gid=0](https://docs.google.com/spreadsheets/d/1TLRZn6UbJqcKoNb9Lhna2qlFUmiYK9eVY-wX5Mwmxl4/edit?usp=sharing).
+Ссылку на тестирование проекта можно найти [здесь](https://docs.google.com/spreadsheets/d/1TLRZn6UbJqcKoNb9Lhna2qlFUmiYK9eVY-wX5Mwmxl4/edit?usp=sharing).
 
 <details>
   <summary>Тык</summary>
